@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador JetX - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-running {
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-stopped {
+            background: #ef4444;
+        }
+        
+        .status-betting {
+            background: #f59e0b;
+            animation: pulse 1s infinite;
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white">
+    
+    <!-- Header -->
+    <header class="border-b border-white/10 bg-black/20 backdrop-blur-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-xl">
+                        JX
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">Operador JetX</h1>
+                        <p class="text-sm text-gray-400">Estratégia Antecessores PRO</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400">Status do Bot</p>
+                        <div class="flex items-center">
+                            <span class="status-indicator" id="statusIndicator"></span>
+                            <span class="font-semibold" id="statusText">Parado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Left Column - Controls -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Balance Card -->
+                <div class="glass-effect rounded-2xl p-6 hover-lift slide-in">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Saldo
+                    </h2>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-xs text-gray-400">Saldo Atual</p>
+                            <p class="text-2xl font-bold text-green-400" id="saldoAtual">R$ 0,00</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p class="text-xs text-gray-400">Inicial</p>
+                                <p class="text-sm font-semibold" id="saldoInicial">R$ 0,00</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Lucro/Prejuízo</p>
+                                <p class="text-sm font-semibold" id="lucroTotal">R$ 0,00</p>
+                            </div>
+                        </div>
+                        <button onclick="atualizarSaldo()" class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors">
+                            Atualizar Saldo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Configuration Card -->
+                <div class="glass-effect rounded-2xl p-6 hover-lift slide-in">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Configurações
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Valor Aposta 1 (R$)</label>
+                                <input type="number" id="ficha1" value="1.00" step="0.10" min="0.10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Valor Aposta 2 (R$)</label>
+                                <input type="number" id="ficha2" value="1.00" step="0.10" min="0.10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Cashout 1</label>
+                                <input type="number" id="cashout1" value="5.00" step="0.10" min="1.10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Cashout 2</label>
+                                <input type="number" id="cashout2" value="2.00" step="0.10" min="1.10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Stop Win (R$)</label>
+                                <input type="number" id="stopWin" value="50.00" step="10" min="10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Stop Loss (R$)</label>
+                                <input type="number" id="stopLoss" value="50.00" step="10" min="10" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Gales</label>
+                                <input type="number" id="gales" value="2" step="1" min="0" max="5" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Mult. Gale 1</label>
+                                <input type="number" id="multiplicadorGale1" value="2" step="0.1" min="1" max="5" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Mult. Gale 2</label>
+                                <input type="number" id="multiplicadorGale2" value="2" step="0.1" min="1" max="5" 
+                                       class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="space-y-3 slide-in">
+                    <button onclick="iniciarBot()" id="btnIniciar" 
+                            class="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105">
+                        🚀 Iniciar Bot
+                    </button>
+                    <button onclick="pararBot()" id="btnParar" 
+                            class="w-full py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 rounded-xl font-semibold text-lg shadow-lg shadow-red-500/30 transition-all transform hover:scale-105">
+                        🛑 Parar Bot
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column - Stats & Logs -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 slide-in">
+                    <div class="glass-effect rounded-xl p-4 hover-lift">
+                        <p class="text-xs text-gray-400 mb-1">Status</p>
+                        <p class="text-lg font-bold" id="statStatus">Parado</p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4 hover-lift">
+                        <p class="text-xs text-gray-400 mb-1">Gale Atual</p>
+                        <p class="text-lg font-bold" id="statGale">0/0</p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4 hover-lift">
+                        <p class="text-xs text-gray-400 mb-1">Investido</p>
+                        <p class="text-lg font-bold text-orange-400" id="statInvestido">R$ 0,00</p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4 hover-lift">
+                        <p class="text-xs text-gray-400 mb-1">Gatilhos</p>
+                        <p class="text-lg font-bold text-purple-400" id="statGatilhos">0</p>
+                    </div>
+                </div>
+
+                <!-- Operation Info -->
+                <div class="glass-effect rounded-2xl p-6 slide-in">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Operação Atual
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-xs text-gray-400">Antecessor Alvo</p>
+                            <p class="text-xl font-bold text-indigo-400" id="targetAntecessor">-</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400">Gatilho PRO</p>
+                            <p class="text-xl font-bold text-purple-400" id="gatilhoOriginal">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Triggers List -->
+                <div class="glass-effect rounded-2xl p-6 slide-in">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-semibold flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                            </svg>
+                            Gatilhos Mapeados
+                        </h2>
+                        <button onclick="listarGatilhos()" class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors">
+                            Atualizar
+                        </button>
+                    </div>
+                    <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
+                        <p class="text-center text-gray-400 py-8">Nenhum gatilho mapeado ainda</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot Card -->
+                <div class="glass-effect rounded-2xl p-6 slide-in">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Print do Jogo
+                    </h2>
+                    <div class="bg-black/30 rounded-lg p-2 flex items-center justify-center h-64 overflow-hidden">
+<img id="gameScreenshot" src="https://via.placeholder.com/400x200?text=Aguardando+Print..." alt="Game Screenshot" class="w-full h-full object-cover rounded-md">
+                    </div>
+                </div>
+
+                <!-- Console Logs -->
+                <div class="glass-effect rounded-2xl p-6 slide-in">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Console
+                    </h2>
+                    <div id="console" class="bg-black/30 rounded-lg p-4 h-64 overflow-y-auto font-mono text-xs space-y-1">
+                        <p class="text-gray-500">[Sistema] Aguardando inicialização...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const API_URL = 'https://jetx.drulp.com.br';
+        let updateInterval = null;
+        let screenshotInterval = null; // New interval for screenshots
+        
+        function log(message, type = 'info') {
+            const console = document.getElementById('console');
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: 'text-blue-400',
+                success: 'text-green-400',
+                error: 'text-red-400',
+                warning: 'text-yellow-400'
+            };
+            const color = colors[type] || colors.info;
+            console.innerHTML += `<p class="${color}">[${timestamp}] ${message}</p>`;
+            console.scrollTop = console.scrollHeight;
+        }
+
+        async function iniciarBot() {
+            try {
+                log('Iniciando bot...', 'info');
+                
+                const config = {
+                    ficha1: parseFloat(document.getElementById('ficha1').value),
+                    cashout1: parseFloat(document.getElementById('cashout1').value),
+                    ficha2: parseFloat(document.getElementById('ficha2').value),
+                    cashout2: parseFloat(document.getElementById('cashout2').value),
+                    stopWin: parseFloat(document.getElementById('stopWin').value),
+                    stopLoss: parseFloat(document.getElementById('stopLoss').value),
+                    gales: parseInt(document.getElementById('gales').value),
+                    multiplicadorGale1: parseFloat(document.getElementById('multiplicadorGale1').value),
+                    multiplicadorGale2: parseFloat(document.getElementById('multiplicadorGale2').value)
+                };
+                
+                const response = await fetch(`${API_URL}/start`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(config)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    log('✅ Bot iniciado com sucesso!', 'success');
+                    updateStatusIndicator('running');
+                    startAutoUpdate();
+                    startAutoScreenshot(); // Start automatic screenshots when bot starts
+                } else {
+                    log(`❌ Erro: ${data.error}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro ao iniciar bot: ${error.message}`, 'error');
+            }
+        }
+
+        async function pararBot() {
+            try {
+                log('Parando bot...', 'warning');
+                
+                const response = await fetch(`${API_URL}/stop`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    log('🛑 Bot parado com sucesso!', 'success');
+                    updateStatusIndicator('stopped');
+                    stopAutoUpdate();
+                    stopAutoScreenshot(); // Stop automatic screenshots when bot stops
+                    
+                    if (data.resumo) {
+                        log(`📊 Saldo Final: R$ ${data.resumo.saldoFinal.toFixed(2)}`, 'info');
+                        log(`💰 Lucro Total: R$ ${data.resumo.lucroTotal.toFixed(2)}`, 
+                            data.resumo.lucroTotal >= 0 ? 'success' : 'error');
+                    }
+                } else {
+                    log(`❌ Erro: ${data.error}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro ao parar bot: ${error.message}`, 'error');
+            }
+        }
+
+        async function atualizarStatus() {
+            try {
+                const response = await fetch(`${API_URL}/status`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const status = data.status;
+                    
+                    // Update status
+                    document.getElementById('statStatus').textContent = status.isRunning ? 'Rodando' : 'Parado';
+                    document.getElementById('statGale').textContent = `${status.currentGale}/${status.config.gales}`;
+                    document.getElementById('statInvestido').textContent = `R$ ${status.totalInvested.toFixed(2)}`;
+                    document.getElementById('statGatilhos').textContent = status.totalGatilhosMapeados;
+                    
+                    // Update operation
+                    document.getElementById('targetAntecessor').textContent = 
+                        status.targetAntecessor ? `${status.targetAntecessor.toFixed(2)}x` : '-';
+                    document.getElementById('gatilhoOriginal').textContent = 
+                        status.gatilhoOriginal ? `${status.gatilhoOriginal.toFixed(2)}x` : '-';
+                    
+                    // Update balance
+                    document.getElementById('saldoAtual').textContent = `R$ ${status.saldo.atual.toFixed(2)}`;
+                    document.getElementById('saldoInicial').textContent = `R$ ${status.saldo.inicial.toFixed(2)}`;
+                    
+                    const lucro = status.saldo.lucroTotal;
+                    const lucroEl = document.getElementById('lucroTotal');
+                    lucroEl.textContent = `R$ ${lucro.toFixed(2)}`;
+                    lucroEl.className = lucro >= 0 ? 'text-sm font-semibold text-green-400' : 'text-sm font-semibold text-red-400';
+                    
+                    // Update status indicator
+                    if (status.isRunning) {
+                        updateStatusIndicator(status.isInBet ? 'betting' : 'running');
+                    } else {
+                        updateStatusIndicator('stopped');
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao atualizar status:', error);
+            }
+        }
+
+        async function atualizarSaldo() {
+            try {
+                const response = await fetch(`${API_URL}/saldo`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    log('💰 Saldo atualizado', 'success');
+                    const saldo = data.saldo;
+                    document.getElementById('saldoAtual').textContent = `R$ ${saldo.atual.toFixed(2)}`;
+                    document.getElementById('saldoInicial').textContent = `R$ ${saldo.inicial.toFixed(2)}`;
+                    
+                    const lucroEl = document.getElementById('lucroTotal');
+                    lucroEl.textContent = `R$ ${saldo.lucroTotal.toFixed(2)}`;
+                    lucroEl.className = saldo.lucroTotal >= 0 ? 'text-sm font-semibold text-green-400' : 'text-sm font-semibold text-red-400';
+                }
+            } catch (error) {
+                log(`❌ Erro ao atualizar saldo: ${error.message}`, 'error');
+            }
+        }
+
+        async function listarGatilhos() {
+            try {
+                const response = await fetch(`${API_URL}/gatilhos`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const list = document.getElementById('gatilhosList');
+                    
+                    if (data.gatilhos.length === 0) {
+                        list.innerHTML = '<p class="text-center text-gray-400 py-8">Nenhum gatilho mapeado ainda</p>';
+                        return;
+                    }
+                    
+                    list.innerHTML = data.gatilhos.map(g => `
+                        <div class="bg-white/5 rounded-lg p-3 flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div>
+                                    <span class="text-xs text-gray-400">Antecessor</span>
+                                    <p class="font-bold text-indigo-400">${g.antecessor}x</p>
+                                </div>
+                                <span class="text-gray-600">→</span>
+                                <div>
+                                    <span class="text-xs text-gray-400">PRO</span>
+                                    <p class="font-bold text-purple-400">${g.gatilhoPRO}x</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-gray-400">Encontrado</p>
+                                <p class="font-semibold">${g.vezesEncontrado}x</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    log(`📋 ${data.total} gatilhos listados`, 'info');
+                }
+            } catch (error) {
+                log(`❌ Erro ao listar gatilhos: ${error.message}`, 'error');
+            }
+        }
+
+        async function capturarTela() {
+            try {
+                const response = await fetch(`${API_URL}/captura`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('gameScreenshot').src = `data:image/png;base64,${data.image}`;
+                } else {
+                    document.getElementById('gameScreenshot').src = `https://via.placeholder.com/400x200?text=Erro+ao+carregar+print`;
+                }
+            } catch (error) {
+                document.getElementById('gameScreenshot').src = `https://via.placeholder.com/400x200?text=Erro+de+conexão`;
+            }
+        }
+
+        function updateStatusIndicator(status) {
+            const indicator = document.getElementById('statusIndicator');
+            const text = document.getElementById('statusText');
+            
+            indicator.className = 'status-indicator';
+            
+            switch(status) {
+                case 'running':
+                    indicator.classList.add('status-running');
+                    text.textContent = 'Rodando';
+                    break;
+                case 'betting':
+                    indicator.classList.add('status-betting');
+                    text.textContent = 'Apostando';
+                    break;
+                case 'stopped':
+                default:
+                    indicator.classList.add('status-stopped');
+                    text.textContent = 'Parado';
+            }
+            }
+
+        function startAutoUpdate() {
+            if (updateInterval) clearInterval(updateInterval);
+            updateInterval = setInterval(() => {
+                atualizarStatus();
+                listarGatilhos();
+            }, 3000);
+            log('🔄 Auto-atualização ativada (a cada 3s)', 'info');
+        }
+
+        function stopAutoUpdate() {
+            if (updateInterval) {
+                clearInterval(updateInterval);
+                updateInterval = null;
+                log('⏸️ Auto-atualização pausada', 'info');
+            }
+        }
+
+        function startAutoScreenshot() {
+            if (screenshotInterval) clearInterval(screenshotInterval);
+            screenshotInterval = setInterval(() => {
+                capturarTela();
+            }, 2000); // Capture every 1 second
+            log('📸 Auto-captura de tela ativada (a cada 1s)', 'info');
+        }
+
+        function stopAutoScreenshot() {
+            if (screenshotInterval) {
+                clearInterval(screenshotInterval);
+                screenshotInterval = null;
+                log('⏸️ Auto-captura de tela pausada', 'info');
+            }
+        }
+
+        // Format currency
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        // Notification system (optional - if browser supports)
+        function showNotification(title, message, type = 'info') {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, {
+                    body: message,
+                    icon: type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'
+                });
+            }
+        }
+
+        // Request notification permission on load
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            log('🚀 Operador JetX inicializado', 'success');
+            log('ℹ️ Configure os parâmetros e clique em "Iniciar Bot"', 'info');
+            log('💡 Sistema de auto-atualização: a cada 3 segundos', 'info');
+            updateStatusIndicator('stopped');
+            
+            // Try to get initial status
+            setTimeout(() => {
+                atualizarStatus().catch(() => {
+                    log('⚠️ API não disponível. Inicie o servidor Node.js na porta 7000', 'warning');
+                });
+            }, 1000);
+        });
+
+        // Prevent form submission on Enter
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Auto-save config to localStorage
+        function saveConfig() {
+            const config = {
+                ficha1: document.getElementById('ficha1').value,
+                cashout1: document.getElementById('cashout1').value,
+                ficha2: document.getElementById('ficha2').value,
+                cashout2: document.getElementById('cashout2').value,
+                stopWin: document.getElementById('stopWin').value,
+                stopLoss: document.getElementById('stopLoss').value,
+                gales: document.getElementById('gales').value,
+                multiplicadorGale1: document.getElementById('multiplicadorGale1').value,
+                multiplicadorGale2: document.getElementById('multiplicadorGale2').value
+            };
+            localStorage.setItem('jetx-config', JSON.stringify(config));
+        }
+
+        // Load config from localStorage
+        function loadConfig() {
+            try {
+                const saved = localStorage.getItem('jetx-config');
+                if (saved) {
+                    const config = JSON.parse(saved);
+                    document.getElementById('ficha1').value = config.ficha1 || '1.00';
+                    document.getElementById('cashout1').value = config.cashout1 || '5.00';
+                    document.getElementById('ficha2').value = config.ficha2 || '1.00';
+                    document.getElementById('cashout2').value = config.cashout2 || '2.00';
+                    document.getElementById('stopWin').value = config.stopWin || '50.00';
+                    document.getElementById('stopLoss').value = config.stopLoss || '50.00';
+                    document.getElementById('gales').value = config.gales || '2';
+                    document.getElementById('multiplicadorGale1').value = config.multiplicadorGale1 || '2';
+                    document.getElementById('multiplicadorGale2').value = config.multiplicadorGale2 || '2';
+                    log('✅ Configurações anteriores carregadas', 'success');
+                }
+            } catch (error) {
+                console.error('Erro ao carregar config:', error);
+            }
+        }
+
+        // Save config on change
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('change', saveConfig);
+        });
+
+        // Load saved config on startup
+        setTimeout(loadConfig, 500);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + S = Start
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                iniciarBot();
+            }
+            // Ctrl/Cmd + P = Stop
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                pararBot();
+            }
+            // Ctrl/Cmd + R = Refresh balance
+            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                e.preventDefault();
+                atualizarSaldo();
+            }
+        });
+
+        // Connection status checker
+        setInterval(async () => {
+            try {
+                const response = await fetch(`${API_URL}/status`, { 
+                    method: 'GET',
+                    signal: AbortSignal.timeout(2000)
+                });
+                if (!response.ok) throw new Error('API offline');
+            } catch (error) {
+                // Silently handle connection errors
+            }
+        }, 10000);
+
+        console.log('%c🚀 Operador JetX v1.0', 'color: #667eea; font-size: 20px; font-weight: bold;');
+        console.log('%cShortcuts:', 'color: #8b5cf6; font-weight: bold;');
+        console.log('Ctrl+S = Iniciar Bot');
+        console.log('Ctrl+P = Parar Bot');
+        console.log('Ctrl+R = Atualizar Saldo');
+    </script>
+</body>
+</html>
