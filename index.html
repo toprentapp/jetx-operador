@@ -340,14 +340,18 @@
             <button
               onclick="iniciarBot()"
               id="btnIniciar"
-              class="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105"
+              class="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              🚀 Iniciar Bot
+              <span id="btnIniciarText">🚀 Iniciar Bot</span>
+              <svg id="btnIniciarSpinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
             </button>
             <button
               onclick="pararBot()"
               id="btnParar"
-              class="w-full py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 rounded-xl font-semibold text-lg shadow-lg shadow-red-500/30 transition-all transform hover:scale-105"
+              class="w-full py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 rounded-xl font-semibold text-lg shadow-lg shadow-red-500/30 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               🛑 Parar Bot
             </button>
@@ -522,7 +526,7 @@
     </div>
 
     <script>
-      const API_URL = "https://jetx.drulp.com.br";
+      const API_URL = "http://localhost:7000";
       let updateInterval = null;
       let screenshotInterval = null; // New interval for screenshots
 
@@ -541,9 +545,17 @@
       }
 
       async function iniciarBot() {
-        try {
-          log("Iniciando bot...", "info");
+        const btnIniciar = document.getElementById('btnIniciar');
+        const btnParar = document.getElementById('btnParar');
+        const btnIniciarText = document.getElementById('btnIniciarText');
+        const btnIniciarSpinner = document.getElementById('btnIniciarSpinner');
 
+        btnIniciar.disabled = true;
+        btnIniciarText.classList.add('hidden');
+        btnIniciarSpinner.classList.remove('hidden');
+        log("Iniciando bot...", "info");
+
+        try {
           const config = {
             ficha1: parseFloat(document.getElementById("ficha1").value),
             cashout1: parseFloat(document.getElementById("cashout1").value),
@@ -573,11 +585,17 @@
             updateStatusIndicator("running");
             startAutoUpdate();
             startAutoScreenshot(); // Start automatic screenshots when bot starts
+            btnParar.disabled = false;
           } else {
             log(`❌ Erro: ${data.error}`, "error");
+            btnIniciar.disabled = false;
           }
         } catch (error) {
           log(`❌ Erro ao iniciar bot: ${error.message}`, "error");
+          btnIniciar.disabled = false;
+        } finally {
+            btnIniciarText.classList.remove('hidden');
+            btnIniciarSpinner.classList.add('hidden');
         }
       }
 
@@ -627,6 +645,10 @@
       }
 
       async function pararBot() {
+        const btnIniciar = document.getElementById('btnIniciar');
+        const btnParar = document.getElementById('btnParar');
+        btnParar.disabled = true;
+
         try {
           log("Parando bot...", "warning");
 
@@ -638,6 +660,7 @@
             updateStatusIndicator("stopped");
             stopAutoUpdate();
             stopAutoScreenshot(); // Stop automatic screenshots when bot stops
+            btnIniciar.disabled = false;
 
             if (data.resumo) {
               log(
@@ -651,9 +674,11 @@
             }
           } else {
             log(`❌ Erro: ${data.error}`, "error");
+            btnParar.disabled = false;
           }
         } catch (error) {
           log(`❌ Erro ao parar bot: ${error.message}`, "error");
+          btnParar.disabled = false;
         }
       }
 
@@ -707,8 +732,12 @@
             // Update status indicator
             if (status.isRunning) {
               updateStatusIndicator(status.isInBet ? "betting" : "running");
+              document.getElementById('btnIniciar').disabled = true;
+              document.getElementById('btnParar').disabled = false;
             } else {
               updateStatusIndicator("stopped");
+              document.getElementById('btnIniciar').disabled = false;
+              document.getElementById('btnParar').disabled = true;
             }
           }
         } catch (error) {
@@ -853,7 +882,7 @@
         if (screenshotInterval) clearInterval(screenshotInterval);
         screenshotInterval = setInterval(() => {
           capturarTela();
-        }, 2000); // Capture every 1 second
+        }, 10000); // Capture every 1 second
         log("📸 Auto-captura de tela ativada (a cada 1s)", "info");
       }
 
@@ -894,6 +923,7 @@
         log('ℹ️ Configure os parâmetros e clique em "Iniciar Bot"', "info");
         log("💡 Sistema de auto-atualização: a cada 3 segundos", "info");
         updateStatusIndicator("stopped");
+        document.getElementById('btnParar').disabled = true;
 
         // Try to get initial status
         setTimeout(() => {
