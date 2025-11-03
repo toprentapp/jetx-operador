@@ -181,29 +181,37 @@
 
           <!-- Configuration Card -->
           <div class="glass-effect rounded-2xl p-6 hover-lift slide-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg font-semibold flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                Configurações
+              </h2>
+              <button
+                id="toggleConfigBtn"
+                class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              Configurações
-            </h2>
-            <div class="space-y-4">
+                Minimizar
+              </button>
+            </div>
+            <div id="configContent" class="space-y-4">
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-sm text-gray-300 mb-2"
@@ -384,59 +392,10 @@
             </div>
           </div>
 
-          <!-- Operation Info -->
-          <div class="glass-effect rounded-2xl p-6 slide-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              Operação Atual
-            </h2>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <p class="text-xs text-gray-400">Antecessor Alvo</p>
-                <p
-                  class="text-xl font-bold text-indigo-400"
-                  id="targetAntecessor"
-                >
-                  -
-                </p>
-              </div>
-              <div>
-                <p class="text-xs text-gray-400">Gatilho PRO</p>
-                <p
-                  class="text-xl font-bold text-purple-400"
-                  id="gatilhoOriginal"
-                >
-                  -
-                </p>
-              </div>
-            </div>
-            <h3 class="text-md font-semibold mb-2 flex items-center">
-              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              Histórico de Operações
-            </h3>
-            <div id="historicoOperacoesList" class="max-h-48 overflow-y-auto space-y-2 text-sm">
-              <p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>
-            </div>
-          </div>
-
-          <!-- Triggers List -->
-          <div class="glass-effect rounded-2xl p-6 slide-in">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-lg font-semibold flex items-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Operation Info -->
+            <div class="glass-effect rounded-2xl p-6 slide-in">
+              <h2 class="text-lg font-semibold mb-4 flex items-center">
                 <svg
                   class="w-5 h-5 mr-2"
                   fill="none"
@@ -447,22 +406,73 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
                   />
                 </svg>
-                Gatilhos Mapeados
+                Operação Atual
               </h2>
-              <button
-                onclick="listarGatilhos()"
-                class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
-              >
-                Atualizar
-              </button>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <p class="text-xs text-gray-400">Antecessor Alvo</p>
+                  <p
+                    class="text-xl font-bold text-indigo-400"
+                    id="targetAntecessor"
+                  >
+                    -
+                  </p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400">Gatilho PRO</p>
+                  <p
+                    class="text-xl font-bold text-purple-400"
+                    id="gatilhoOriginal"
+                  >
+                    -
+                  </p>
+                </div>
+              </div>
+              <h3 class="text-md font-semibold mb-2 flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Histórico de Operações
+              </h3>
+              <div id="historicoOperacoesList" class="max-h-48 overflow-y-auto space-y-2 text-sm">
+                <p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>
+              </div>
             </div>
-            <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
-              <p class="text-center text-gray-400 py-8">
-                Nenhum gatilho mapeado ainda
-              </p>
+
+            <!-- Triggers List -->
+            <div class="glass-effect rounded-2xl p-6 slide-in">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                    />
+                  </svg>
+                  Gatilhos Mapeados
+                </h2>
+                <button
+                  onclick="listarGatilhos()"
+                  class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
+                >
+                  Atualizar
+                </button>
+              </div>
+              <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
+                <p class="text-center text-gray-400 py-8">
+                  Nenhum gatilho mapeado ainda
+                </p>
+              </div>
             </div>
           </div>
 
@@ -998,6 +1008,22 @@
 
       // Load saved config on startup
       setTimeout(loadConfig, 500);
+
+      // Toggle config card visibility
+      const toggleConfigBtn = document.getElementById('toggleConfigBtn');
+      const configContent = document.getElementById('configContent');
+      let configMinimized = false; // Initial state
+
+      toggleConfigBtn.addEventListener('click', () => {
+        configMinimized = !configMinimized;
+        if (configMinimized) {
+          configContent.classList.add('hidden');
+          toggleConfigBtn.textContent = 'Maximizar';
+        } else {
+          configContent.classList.remove('hidden');
+          toggleConfigBtn.textContent = 'Minimizar';
+        }
+      });
 
       // Keyboard shortcuts
       document.addEventListener("keydown", (e) => {
