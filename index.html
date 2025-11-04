@@ -519,6 +519,19 @@
               </div>
             </div>
 
+            <!-- Card de Velas Recentes -->
+            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in" style="max-height: 150px;">
+              <h2 class="text-sm font-semibold mb-2 flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                Velas Recentes (10 últimas)
+              </h2>
+              <div id="velasRecentesList" class="flex items-center space-x-2 overflow-x-auto">
+                <p class="text-xs text-gray-400">Aguardando dados...</p>
+              </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
               <!-- Operation Info -->
               <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in">
@@ -1619,13 +1632,52 @@
           atualizarStatus();
           listarGatilhos();
           atualizarHistoricoOperacoes();
-        }, 5000);
+          atualizarVelasRecentes();
+        }, 2000); // Atualiza a cada 2 segundos
       }
 
       function stopAutoUpdate() {
         if (updateInterval) {
           clearInterval(updateInterval);
           updateInterval = null;
+        }
+      }
+
+      async function atualizarVelasRecentes() {
+        try {
+          const response = await fetch(`${API_URL}/velas-recentes`, {
+            headers: { "Authorization": `Bearer ${authToken}` }
+          });
+          const data = await response.json();
+
+          if (data.success && data.velas && data.velas.length > 0) {
+            const list = document.getElementById("velasRecentesList");
+            
+            list.innerHTML = data.velas.map((vela) => {
+              const numero = parseFloat(vela.numero);
+              let corClass = '';
+              
+              // Definir cor baseada no valor
+              if (numero < 2) {
+                corClass = 'bg-blue-500'; // Azul
+              } else if (numero >= 2 && numero < 10) {
+                corClass = 'bg-purple-500'; // Roxo
+              } else {
+                corClass = 'bg-pink-500'; // Rosa
+              }
+              
+              return `
+                <div class="${corClass} rounded-lg px-3 py-1 flex flex-col items-center justify-center min-w-[60px]">
+                  <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
+                </div>
+              `;
+            }).join('');
+          } else {
+            document.getElementById("velasRecentesList").innerHTML = 
+              '<p class="text-xs text-gray-400">Aguardando dados...</p>';
+          }
+        } catch (error) {
+          console.error("Erro ao atualizar velas recentes:", error);
         }
       }
 
