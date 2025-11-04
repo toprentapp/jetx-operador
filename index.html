@@ -96,305 +96,164 @@
         transform: translateY(-2px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
+
+      .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .mobile-hidden {
+          display: none !important;
+        }
+        
+        .mobile-text-sm {
+          font-size: 0.75rem;
+        }
+        
+        .mobile-p-2 {
+          padding: 0.5rem;
+        }
+        
+        .mobile-gap-2 {
+          gap: 0.5rem;
+        }
+      }
     </style>
   </head>
   <body
     class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white"
   >
-    <!-- Header -->
-    <header
-      class="border-b border-white/10 bg-black/20 backdrop-blur-lg sticky top-0 z-50"
-    >
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-4">
-            <div
-              class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-xl"
-            >
-              JX
-            </div>
-            <div>
-              <h1 class="text-2xl font-bold">Operador JetX</h1>
-              <p class="text-sm text-gray-400">Estratégia Antecessores PRO</p>
-            </div>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+      <div class="glass-effect rounded-2xl p-8 w-full max-w-md slide-in">
+        <div class="text-center mb-8">
+          <div
+            class="w-20 h-20 mx-auto rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-3xl mb-4"
+          >
+            JX
           </div>
-          <div class="flex items-center space-x-4">
-            <div class="text-right">
-              <p class="text-xs text-gray-400">Status do Bot</p>
-              <div class="flex items-center">
-                <span class="status-indicator" id="statusIndicator"></span>
-                <span class="font-semibold" id="statusText">Parado</span>
-              </div>
-            </div>
+          <h1 class="text-3xl font-bold mb-2">Operador JetX</h1>
+        </div>
+
+        <form id="loginForm" class="space-y-4">
+          <div>
+            <label class="block text-sm text-gray-300 mb-2">Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              required
+              placeholder="seu@email.com"
+              class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+            />
           </div>
+          <div>
+            <label class="block text-sm text-gray-300 mb-2">Senha</label>
+            <input
+              type="password"
+              id="loginPassword"
+              required
+              placeholder="••••••••"
+              class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+            />
+          </div>
+          <button
+            type="submit"
+            id="btnLogin"
+            class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 rounded-lg font-semibold transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span id="btnLoginText">Entrar</span>
+            <svg id="btnLoginSpinner" class="animate-spin h-5 w-5 text-white mx-auto hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </button>
+        </form>
+
+        <div id="loginError" class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden">
+        </div>
+
+        <div class="mt-6 text-center text-sm text-gray-400">
+          <p>Não tem uma conta? Entre em contato com o administrador.</p>
         </div>
       </div>
-    </header>
+    </div>
 
-    <div class="container mx-auto px-6 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Left Column - Controls -->
-        <div class="lg:col-span-1 space-y-6">
-          <!-- Balance Card -->
-          <div class="glass-effect rounded-2xl p-6 hover-lift slide-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+    <!-- Main Dashboard (Hidden until login) -->
+    <div id="mainDashboard" class="hidden">
+      <!-- Header -->
+      <header
+        class="border-b border-white/10 bg-black/20 backdrop-blur-lg sticky top-0 z-50"
+      >
+        <div class="container mx-auto px-3 md:px-6 py-3 md:py-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 md:space-x-4">
+              <div
+                class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-lg md:text-xl"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Saldo
-            </h2>
-            <div class="space-y-3">
+                JX
+              </div>
               <div>
-                <p class="text-xs text-gray-400">Saldo Atual</p>
-                <p class="text-2xl font-bold text-green-400" id="saldoAtual">
-                  R$ 0,00
-                </p>
+                <h1 class="text-lg md:text-2xl font-bold">Operador JetX</h1>
+                <p class="text-xs md:text-sm text-gray-400 hidden sm:block">Estratégia Antecessores PRO</p>
               </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <p class="text-xs text-gray-400">Inicial</p>
-                  <p class="text-sm font-semibold" id="saldoInicial">R$ 0,00</p>
-                </div>
-                <div>
-                  <p class="text-xs text-gray-400">Lucro/Prejuízo</p>
-                  <p class="text-sm font-semibold" id="lucroTotal">R$ 0,00</p>
-                </div>
-              </div>
-              <button
-                onclick="atualizarSaldo()"
-                class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
-              >
-                Atualizar Saldo
-              </button>
             </div>
-          </div>
-
-          <!-- Configuration Card -->
-          <div class="glass-effect rounded-2xl p-6 hover-lift slide-in">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-lg font-semibold flex items-center">
-                <svg
-                  class="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
+            <div class="flex items-center space-x-2 md:space-x-4 flex-wrap">
+              <button
+                onclick="abrirModalCasas()"
+                class="px-2 md:px-4 py-1.5 md:py-2 bg-indigo-500/20 hover:bg-indigo-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
+              >
+                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                 </svg>
-                Configurações
-              </h2>
+                <span class="hidden sm:inline">Casas Bet</span>
+                <span class="sm:hidden">Casas</span>
+              </button>
               <button
-                id="toggleConfigBtn"
-                class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
+                onclick="abrirModalHistorico()"
+                class="px-2 md:px-4 py-1.5 md:py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
               >
-                Minimizar
+                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="hidden sm:inline">Histórico</span>
+                <span class="sm:hidden">Hist.</span>
+              </button>
+              <div class="text-right hidden lg:block">
+                <p class="text-xs text-gray-400">Usuário</p>
+                <p class="font-semibold text-sm" id="userEmail">-</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-gray-400">Casa</p>
+                <p class="font-semibold text-xs md:text-sm" id="casaAtiva">-</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-gray-400 hidden sm:block">Status</p>
+                <div class="flex items-center">
+                  <span class="status-indicator" id="statusIndicator"></span>
+                  <span class="font-semibold text-xs md:text-sm" id="statusText">Parado</span>
+                </div>
+              </div>
+              <button
+                onclick="logout()"
+                class="px-2 md:px-4 py-1.5 md:py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-xs md:text-sm transition-colors"
+              >
+                Sair
               </button>
             </div>
-            <div id="configContent" class="space-y-4">
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Valor Aposta 1 (R$)</label
-                  >
-                  <input
-                    type="number"
-                    id="ficha1"
-                    value="1.00"
-                    step="0.10"
-                    min="0.10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Valor Aposta 2 (R$)</label
-                  >
-                  <input
-                    type="number"
-                    id="ficha2"
-                    value="1.00"
-                    step="0.10"
-                    min="0.10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Cashout 1</label
-                  >
-                  <input
-                    type="number"
-                    id="cashout1"
-                    value="5.00"
-                    step="0.10"
-                    min="1.10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Cashout 2</label
-                  >
-                  <input
-                    type="number"
-                    id="cashout2"
-                    value="2.00"
-                    step="0.10"
-                    min="1.10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Stop Win (R$)</label
-                  >
-                  <input
-                    type="number"
-                    id="stopWin"
-                    value="50.00"
-                    step="10"
-                    min="10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Stop Loss (R$)</label
-                  >
-                  <input
-                    type="number"
-                    id="stopLoss"
-                    value="50.00"
-                    step="10"
-                    min="10"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2">Gales</label>
-                  <input
-                    type="number"
-                    id="gales"
-                    value="2"
-                    step="1"
-                    min="0"
-                    max="5"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Mult. Gale 1</label
-                  >
-                  <input
-                    type="number"
-                    id="multiplicadorGale1"
-                    value="2"
-                    step="0.1"
-                    min="1"
-                    max="5"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-sm text-gray-300 mb-2"
-                    >Mult. Gale 2</label
-                  >
-                  <input
-                    type="number"
-                    id="multiplicadorGale2"
-                    value="2"
-                    step="0.1"
-                    min="1"
-                    max="5"
-                    class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Control Buttons -->
-          <div class="space-y-3 slide-in">
-            <button
-              onclick="iniciarBot()"
-              id="btnIniciar"
-              class="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <span id="btnIniciarText">🚀 Iniciar Bot</span>
-              <svg id="btnIniciarSpinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </button>
-            <button
-              onclick="pararBot()"
-              id="btnParar"
-              class="w-full py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 rounded-xl font-semibold text-lg shadow-lg shadow-red-500/30 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              🛑 Parar Bot
-            </button>
           </div>
         </div>
+      </header>
 
-        <!-- Right Column - Stats & Logs -->
-        <div class="lg:col-span-2 space-y-6">
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 slide-in">
-            <div class="glass-effect rounded-xl p-4 hover-lift">
-              <p class="text-xs text-gray-400 mb-1">Status</p>
-              <p class="text-lg font-bold" id="statStatus">Parado</p>
-            </div>
-            <div class="glass-effect rounded-xl p-4 hover-lift">
-              <p class="text-xs text-gray-400 mb-1">Gale Atual</p>
-              <p class="text-lg font-bold" id="statGale">0/0</p>
-            </div>
-            <div class="glass-effect rounded-xl p-4 hover-lift">
-              <p class="text-xs text-gray-400 mb-1">Investido</p>
-              <p class="text-lg font-bold text-orange-400" id="statInvestido">
-                R$ 0,00
-              </p>
-            </div>
-            <div class="glass-effect rounded-xl p-4 hover-lift">
-              <p class="text-xs text-gray-400 mb-1">Gatilhos</p>
-              <p class="text-lg font-bold text-purple-400" id="statGatilhos">
-                0
-              </p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Operation Info -->
-            <div class="glass-effect rounded-2xl p-6 slide-in">
+      <div class="container mx-auto px-3 md:px-6 py-4 md:py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-6">
+          <!-- Left Column - Controls -->
+          <div class="lg:col-span-1 space-y-3 md:space-y-6">
+            <!-- Balance Card -->
+            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in">
               <h2 class="text-lg font-semibold mb-4 flex items-center">
                 <svg
                   class="w-5 h-5 mr-2"
@@ -406,44 +265,39 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                Operação Atual
+                Saldo
               </h2>
-              <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="space-y-3">
                 <div>
-                  <p class="text-xs text-gray-400">Antecessor Alvo</p>
-                  <p
-                    class="text-xl font-bold text-indigo-400"
-                    id="targetAntecessor"
-                  >
-                    -
+                  <p class="text-xs text-gray-400">Saldo Atual</p>
+                  <p class="text-2xl font-bold text-green-400" id="saldoAtual">
+                    R$ 0,00
                   </p>
                 </div>
-                <div>
-                  <p class="text-xs text-gray-400">Gatilho PRO</p>
-                  <p
-                    class="text-xl font-bold text-purple-400"
-                    id="gatilhoOriginal"
-                  >
-                    -
-                  </p>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <p class="text-xs text-gray-400">Inicial</p>
+                    <p class="text-sm font-semibold" id="saldoInicial">R$ 0,00</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-400">Lucro/Prejuízo</p>
+                    <p class="text-sm font-semibold" id="lucroTotal">R$ 0,00</p>
+                  </div>
                 </div>
-              </div>
-              <h3 class="text-md font-semibold mb-2 flex items-center">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Histórico de Operações
-              </h3>
-              <div id="historicoOperacoesList" class="max-h-48 overflow-y-auto space-y-2 text-sm">
-                <p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>
+                <button
+                  onclick="atualizarSaldo()"
+                  class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
+                >
+                  Atualizar Saldo
+                </button>
               </div>
             </div>
 
-            <!-- Triggers List -->
-            <div class="glass-effect rounded-2xl p-6 slide-in">
+            <!-- Configuration Card -->
+            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in">
               <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-semibold flex items-center">
                   <svg
@@ -456,103 +310,973 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  Gatilhos Mapeados
+                  Configurações
                 </h2>
                 <button
-                  onclick="listarGatilhos()"
-                  class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
+                  id="toggleConfigBtn"
+                  class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
                 >
-                  Atualizar
+                  Minimizar
                 </button>
               </div>
-              <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
-                <p class="text-center text-gray-400 py-8">
-                  Nenhum gatilho mapeado ainda
+              <div id="configContent" class="space-y-4">
+                <div>
+                  <label class="block text-xs md:text-sm text-gray-300 mb-2">Casa de Apostas</label>
+                  <select
+                    id="casaBetSelect"
+                    onchange="ativarCasa()"
+                    class="w-full px-3 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                  >
+                    <option value="">Carregando...</option>
+                  </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2 md:gap-3">
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Aposta 1 (R$)</label
+                    >
+                    <input
+                      type="number"
+                      id="ficha1"
+                      value="1.00"
+                      step="0.10"
+                      min="0.10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Aposta 2 (R$)</label
+                    >
+                    <input
+                      type="number"
+                      id="ficha2"
+                      value="1.00"
+                      step="0.10"
+                      min="0.10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 md:gap-3">
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Cashout 1</label
+                    >
+                    <input
+                      type="number"
+                      id="cashout1"
+                      value="5.00"
+                      step="0.10"
+                      min="1.10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Cashout 2</label
+                    >
+                    <input
+                      type="number"
+                      id="cashout2"
+                      value="2.00"
+                      step="0.10"
+                      min="1.10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 md:gap-3">
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Stop Win (R$)</label
+                    >
+                    <input
+                      type="number"
+                      id="stopWin"
+                      value="50.00"
+                      step="10"
+                      min="10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Stop Loss (R$)</label
+                    >
+                    <input
+                      type="number"
+                      id="stopLoss"
+                      value="50.00"
+                      step="10"
+                      min="10"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 md:gap-3">
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2">Gales</label>
+                    <input
+                      type="number"
+                      id="gales"
+                      value="2"
+                      step="1"
+                      min="0"
+                      max="5"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Mult. Gale 1</label
+                    >
+                    <input
+                      type="number"
+                      id="multiplicadorGale1"
+                      value="2"
+                      step="0.1"
+                      min="1"
+                      max="5"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 md:gap-3">
+                  <div>
+                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Mult. Gale 2</label
+                    >
+                    <input
+                      type="number"
+                      id="multiplicadorGale2"
+                      value="2"
+                      step="0.1"
+                      min="1"
+                      max="5"
+                      class="w-full px-2 md:px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="space-y-2 md:space-y-3 slide-in">
+              <button
+                onclick="iniciarBot()"
+                id="btnIniciar"
+                class="w-full py-3 md:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-base md:text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span id="btnIniciarText">🚀 Iniciar Bot</span>
+                <svg id="btnIniciarSpinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </button>
+              <button
+                onclick="pararBot()"
+                id="btnParar"
+                class="w-full py-3 md:py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 rounded-xl font-semibold text-base md:text-lg shadow-lg shadow-red-500/30 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                🛑 Parar Bot
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column - Stats & Logs -->
+          <div class="lg:col-span-2 space-y-3 md:space-y-6">
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 slide-in">
+              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+                <p class="text-xs text-gray-400 mb-1">Status</p>
+                <p class="text-sm md:text-lg font-bold" id="statStatus">Parado</p>
+              </div>
+              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+                <p class="text-xs text-gray-400 mb-1">Gale</p>
+                <p class="text-sm md:text-lg font-bold" id="statGale">0/0</p>
+              </div>
+              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+                <p class="text-xs text-gray-400 mb-1">Investido</p>
+                <p class="text-sm md:text-lg font-bold text-orange-400" id="statInvestido">
+                  R$ 0,00
+                </p>
+              </div>
+              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+                <p class="text-xs text-gray-400 mb-1">Gatilhos</p>
+                <p class="text-sm md:text-lg font-bold text-purple-400" id="statGatilhos">
+                  0
                 </p>
               </div>
             </div>
-          </div>
 
-          <!-- Screenshot Card -->
-          <div class="glass-effect rounded-2xl p-6 slide-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              Print do Jogo
-            </h2>
-            <div
-              class="bg-black/30 rounded-lg p-2 flex items-center justify-center h-124 overflow-hidden"
-            >
-              <img
-                id="gameScreenshot"
-                src="https://jetxcasino.games/wp-content/uploads/2023/05/jet-x-slot.jpg"
-                alt="Game Screenshot"
-                class="w-full h-full object-cover rounded-md"
-              />
-            </div>
-          </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
+              <!-- Operation Info -->
+              <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                  Operação Atual
+                </h2>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <p class="text-xs text-gray-400">Antecessor Alvo</p>
+                    <p
+                      class="text-xl font-bold text-indigo-400"
+                      id="targetAntecessor"
+                    >
+                      -
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-400">Gatilho PRO</p>
+                    <p
+                      class="text-xl font-bold text-purple-400"
+                      id="gatilhoOriginal"
+                    >
+                      -
+                    </p>
+                  </div>
+                </div>
+                <h3 class="text-md font-semibold mb-2 flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Histórico de Operações
+                </h3>
+                <div id="historicoOperacoesList" class="max-h-48 overflow-y-auto space-y-2 text-sm">
+                  <p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>
+                </div>
+              </div>
 
-          <!-- Console Logs -->
-          <div class="glass-effect rounded-2xl p-6 slide-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              Console
-            </h2>
-            <div
-              id="console"
-              class="bg-black/30 rounded-lg p-4 h-64 overflow-y-auto font-mono text-xs space-y-1"
-            >
-              <p class="text-gray-500">[Sistema] Aguardando inicialização...</p>
+              <!-- Triggers List -->
+              <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in">
+                <div class="flex items-center justify-between mb-4">
+                  <h2 class="text-lg font-semibold flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                      />
+                    </svg>
+                    Gatilhos Mapeados
+                  </h2>
+                  <button
+                    onclick="listarGatilhos()"
+                    class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-colors"
+                  >
+                    Atualizar
+                  </button>
+                </div>
+                <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
+                  <p class="text-center text-gray-400 py-8">
+                    Nenhum gatilho mapeado ainda
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      const API_URL = "https://jetx.drulp.com.br";
-      let updateInterval = null;
-      let screenshotInterval = null; // New interval for screenshots
+    <!-- Modal de Casas Bet -->
+    <div id="modalCasas" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="glass-effect rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto slide-in">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            Gerenciar Casas de Apostas
+          </h2>
+          <button onclick="fecharModalCasas()" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
 
-      function log(message, type = "info") {
-        const console = document.getElementById("console");
-        const timestamp = new Date().toLocaleTimeString();
-        const colors = {
-          info: "text-blue-400",
-          success: "text-green-400",
-          error: "text-red-400",
-          warning: "text-yellow-400",
-        };
-        const color = colors[type] || colors.info;
-        console.innerHTML += `<p class="${color}">[${timestamp}] ${message}</p>`;
-        console.scrollTop = console.scrollHeight;
+        <!-- Formulário de Cadastro -->
+        <div class="bg-white/5 rounded-xl p-4 mb-6">
+          <h3 class="text-lg font-semibold mb-4">Adicionar Nova Casa</h3>
+          <form id="formCadastrarCasa" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-300 mb-2">Casa de Apostas *</label>
+                <select
+                  id="novaCasa"
+                  required
+                  class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                >
+                  <option value="">Selecione...</option>
+                  <option value="ApostaX">ApostaX</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-gray-300 mb-2">Login/Email *</label>
+                <input
+                  type="text"
+                  id="novoLogin"
+                  required
+                  placeholder="seu@email.com"
+                  class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-2">Senha *</label>
+              <input
+                type="password"
+                id="novaSenha"
+                required
+                placeholder="••••••••"
+                class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 rounded-lg font-semibold transition-all transform hover:scale-105"
+            >
+              Adicionar Casa
+            </button>
+          </form>
+          <div id="cadastroError" class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden"></div>
+          <div id="cadastroSuccess" class="mt-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm hidden"></div>
+        </div>
+
+        <!-- Lista de Casas -->
+        <div class="bg-white/5 rounded-xl p-4">
+          <h3 class="text-lg font-semibold mb-4">Minhas Casas</h3>
+          <div id="listaCasas" class="space-y-3">
+            <p class="text-center text-gray-400 py-8">Carregando...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Histórico -->
+    <div id="modalHistorico" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Histórico de Operações
+          </h2>
+          <button onclick="fecharModalHistorico()" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Filtros -->
+        <div class="bg-white/5 rounded-xl p-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300 mb-2">Filtrar por Casa</label>
+              <select
+                id="filtroCasa"
+                onchange="carregarHistoricoCompleto()"
+                class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+              >
+                <option value="">Todas as Casas</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-2">Filtrar por Status</label>
+              <select
+                id="filtroStatus"
+                onchange="carregarHistoricoCompleto()"
+                class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+              >
+                <option value="">Todos</option>
+                <option value="win">Vitórias</option>
+                <option value="loss">Derrotas</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button
+                onclick="carregarHistoricoCompleto()"
+                class="w-full py-2 bg-indigo-500/20 hover:bg-indigo-500/30 rounded-lg text-sm transition-colors"
+              >
+                Atualizar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white/5 rounded-xl p-4">
+            <p class="text-xs text-gray-400 mb-1">Total de Operações</p>
+            <p class="text-2xl font-bold" id="totalOperacoes">0</p>
+          </div>
+          <div class="bg-green-500/10 rounded-xl p-4">
+            <p class="text-xs text-gray-400 mb-1">Vitórias</p>
+            <p class="text-2xl font-bold text-green-400" id="totalVitorias">0</p>
+          </div>
+          <div class="bg-red-500/10 rounded-xl p-4">
+            <p class="text-xs text-gray-400 mb-1">Derrotas</p>
+            <p class="text-2xl font-bold text-red-400" id="totalDerrotas">0</p>
+          </div>
+          <div class="bg-purple-500/10 rounded-xl p-4">
+            <p class="text-xs text-gray-400 mb-1">Lucro/Prejuízo Total</p>
+            <p class="text-2xl font-bold" id="lucroTotalHistorico">R$ 0,00</p>
+          </div>
+        </div>
+
+        <!-- Tabela de Operações -->
+        <div class="bg-white/5 rounded-xl p-4 overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left py-3 px-2">Data/Hora</th>
+                <th class="text-left py-3 px-2">Casa</th>
+                <th class="text-left py-3 px-2">Gatilho</th>
+                <th class="text-left py-3 px-2">Resultado</th>
+                <th class="text-left py-3 px-2">Gale</th>
+                <th class="text-left py-3 px-2">Status</th>
+                <th class="text-right py-3 px-2">Lucro/Prejuízo</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaHistorico">
+              <tr>
+                <td colspan="7" class="text-center py-8 text-gray-400">Carregando...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API_URL = "https://api.pix24h.online";
+      let updateInterval = null;
+      let authToken = null;
+      let currentUser = null;
+      let casaAtivaInfo = null;
+      
+      // Cache para detectar mudanças
+      let lastStatusData = null;
+      let lastGatilhosData = null;
+      let lastHistoricoData = null;
+      
+      // Cache de gatilhos para evitar perda de dados quando API retorna menos gatilhos
+      let cachedGatilhos = [];
+      let lastGatilhosUpdate = null;
+
+      // ==================== AUTENTICAÇÃO ====================
+
+      async function handleLogin(e) {
+        e.preventDefault();
+        
+        const btnLogin = document.getElementById('btnLogin');
+        const btnLoginText = document.getElementById('btnLoginText');
+        const btnLoginSpinner = document.getElementById('btnLoginSpinner');
+        const loginError = document.getElementById('loginError');
+        
+        btnLogin.disabled = true;
+        btnLoginText.classList.add('hidden');
+        btnLoginSpinner.classList.remove('hidden');
+        loginError.classList.add('hidden');
+
+        try {
+          const email = document.getElementById('loginEmail').value;
+          const password = document.getElementById('loginPassword').value;
+
+          const response = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            authToken = data.session.access_token;
+            currentUser = data.user;
+            
+            // Salvar token no localStorage
+            localStorage.setItem('jetx_auth_token', authToken);
+            localStorage.setItem('jetx_user', JSON.stringify(currentUser));
+            
+            // Carregar casas do usuário
+            await carregarCasas();
+            
+            // Mostrar dashboard
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainDashboard').classList.remove('hidden');
+            document.getElementById('userEmail').textContent = currentUser.email;
+            
+            // Carregar dados iniciais
+            setTimeout(() => {
+              carregarDadosIniciais();
+            }, 1000);
+          } else {
+            loginError.textContent = data.error || 'Erro ao fazer login';
+            loginError.classList.remove('hidden');
+          }
+        } catch (error) {
+          loginError.textContent = 'Erro de conexão com o servidor';
+          loginError.classList.remove('hidden');
+          console.error('Erro no login:', error);
+        } finally {
+          btnLogin.disabled = false;
+          btnLoginText.classList.remove('hidden');
+          btnLoginSpinner.classList.add('hidden');
+        }
       }
+
+      async function logout() {
+        try {
+          await fetch(`${API_URL}/auth/logout`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+        } catch (error) {
+          console.error('Erro no logout:', error);
+        }
+        
+        // Limpar dados locais
+        localStorage.removeItem('jetx_auth_token');
+        localStorage.removeItem('jetx_user');
+        authToken = null;
+        currentUser = null;
+        casaAtivaInfo = null;
+        
+        // Parar atualizações
+        stopAutoUpdate();
+        
+        // Mostrar tela de login
+        document.getElementById('mainDashboard').classList.add('hidden');
+        document.getElementById('loginScreen').classList.remove('hidden');
+      }
+
+      async function carregarCasas() {
+        try {
+          const response = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (data.success && data.casas.length > 0) {
+            const casaAtiva = data.casas.find(c => c.ativa);
+            if (casaAtiva) {
+              casaAtivaInfo = casaAtiva;
+              document.getElementById('casaAtiva').textContent = casaAtiva.casa;
+            } else {
+              document.getElementById('casaAtiva').textContent = 'Nenhuma ativa';
+            }
+          } else {
+            document.getElementById('casaAtiva').textContent = 'Sem casas';
+          }
+        } catch (error) {
+          console.error('Erro ao carregar casas:', error);
+        }
+      }
+
+      function checkAuth() {
+        const savedToken = localStorage.getItem('jetx_auth_token');
+        const savedUser = localStorage.getItem('jetx_user');
+        
+        if (savedToken && savedUser) {
+          authToken = savedToken;
+          currentUser = JSON.parse(savedUser);
+          
+          // Verificar se o token ainda é válido
+          fetch(`${API_URL}/status`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          })
+          .then(response => {
+            if (response.ok) {
+              // Token válido, mostrar dashboard
+              document.getElementById('loginScreen').classList.add('hidden');
+              document.getElementById('mainDashboard').classList.remove('hidden');
+              document.getElementById('userEmail').textContent = currentUser.email;
+              
+              carregarCasas();
+              carregarCasasNoSelect();
+              carregarDadosIniciais();
+            } else {
+              // Token inválido, fazer logout
+              logout();
+            }
+          })
+          .catch(() => {
+            // Erro de conexão, mostrar login
+            logout();
+          });
+        }
+      }
+
+      async function carregarCasasNoSelect() {
+        try {
+          const response = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+          const select = document.getElementById('casaBetSelect');
+
+          if (data.success && data.casas.length > 0) {
+            select.innerHTML = '<option value="">Selecione uma casa</option>';
+            
+            data.casas.forEach(casa => {
+              const option = document.createElement('option');
+              option.value = casa.id;
+              option.textContent = `${casa.casa} - ${casa.login}`;
+              if (casa.ativa) {
+                option.selected = true;
+              }
+              select.appendChild(option);
+            });
+          } else {
+            select.innerHTML = '<option value="">Nenhuma casa cadastrada</option>';
+          }
+        } catch (error) {
+          console.error('Erro ao carregar casas no select:', error);
+          document.getElementById('casaBetSelect').innerHTML = '<option value="">Erro ao carregar</option>';
+        }
+      }
+
+      async function ativarCasa() {
+        const select = document.getElementById('casaBetSelect');
+        const casaId = select.value;
+
+        if (!casaId) {
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/casas/${casaId}/ativar`, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            await carregarCasas();
+            await carregarCasasNoSelect();
+          }
+        } catch (error) {
+          console.error('Erro ao ativar casa:', error);
+        }
+      }
+
+      // ==================== MODAL DE CASAS ====================
+
+      function abrirModalCasas() {
+        document.getElementById('modalCasas').classList.remove('hidden');
+        listarCasasNoModal();
+      }
+
+      function fecharModalCasas() {
+        document.getElementById('modalCasas').classList.add('hidden');
+      }
+
+      async function listarCasasNoModal() {
+        try {
+          const response = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+          const lista = document.getElementById('listaCasas');
+
+          if (data.success && data.casas.length > 0) {
+            lista.innerHTML = data.casas.map(casa => `
+              <div class="bg-white/5 rounded-lg p-4 flex items-center justify-between hover:bg-white/10 transition-colors">
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-1">
+                    <h4 class="font-semibold">${casa.casa}</h4>
+                    ${casa.ativa ? '<span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Ativa</span>' : ''}
+                  </div>
+                  <p class="text-sm text-gray-400">Login: ${casa.login}</p>
+                  <p class="text-xs text-gray-500">Cadastrada em: ${new Date(casa.created_at).toLocaleDateString('pt-BR')}</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  ${!casa.ativa ? `
+                    <button
+                      onclick="ativarCasaModal(${casa.id})"
+                      class="px-3 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg text-sm transition-colors"
+                    >
+                      Ativar
+                    </button>
+                  ` : ''}
+                  <button
+                    onclick="removerCasa(${casa.id})"
+                    class="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg text-sm transition-colors"
+                  >
+                    Remover
+                  </button>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            lista.innerHTML = '<p class="text-center text-gray-400 py-8">Nenhuma casa cadastrada ainda</p>';
+          }
+        } catch (error) {
+          console.error('Erro ao listar casas:', error);
+          document.getElementById('listaCasas').innerHTML = '<p class="text-center text-red-400 py-8">Erro ao carregar casas</p>';
+        }
+      }
+
+      async function ativarCasaModal(casaId) {
+        try {
+          const response = await fetch(`${API_URL}/casas/${casaId}/ativar`, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            await carregarCasas();
+            await carregarCasasNoSelect();
+            await listarCasasNoModal();
+          }
+        } catch (error) {
+          console.error('Erro ao ativar casa:', error);
+        }
+      }
+
+      async function removerCasa(casaId) {
+        if (!confirm('Tem certeza que deseja remover esta casa?')) {
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/casas/${casaId}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            await carregarCasas();
+            await carregarCasasNoSelect();
+            await listarCasasNoModal();
+          }
+        } catch (error) {
+          console.error('Erro ao remover casa:', error);
+        }
+      }
+
+      // Formulário de cadastro
+      document.getElementById('formCadastrarCasa').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const cadastroError = document.getElementById('cadastroError');
+        const cadastroSuccess = document.getElementById('cadastroSuccess');
+        cadastroError.classList.add('hidden');
+        cadastroSuccess.classList.add('hidden');
+
+        const casa = document.getElementById('novaCasa').value;
+        const login = document.getElementById('novoLogin').value;
+        const senha = document.getElementById('novaSenha').value;
+
+        try {
+          // Verificar se o usuário já tem uma conta cadastrada para esta casa
+          const casasResponse = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const casasData = await casasResponse.json();
+
+          if (casasData.success && casasData.casas.length > 0) {
+            // Verificar se já existe uma conta para esta casa
+            const casaExistente = casasData.casas.find(c => c.casa === casa);
+            
+            if (casaExistente) {
+              cadastroError.textContent = `Você já possui uma conta cadastrada para ${casa}. Apenas uma conta por casa é permitida.`;
+              cadastroError.classList.remove('hidden');
+              return;
+            }
+          }
+
+          // Prosseguir com o cadastro
+          const response = await fetch(`${API_URL}/casas`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify({ casa, login, senha })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            cadastroSuccess.textContent = 'Casa cadastrada com sucesso!';
+            cadastroSuccess.classList.remove('hidden');
+            
+            // Limpar formulário
+            document.getElementById('formCadastrarCasa').reset();
+            
+            // Atualizar listas
+            await carregarCasas();
+            await carregarCasasNoSelect();
+            await listarCasasNoModal();
+          } else {
+            cadastroError.textContent = data.error || 'Erro ao cadastrar casa';
+            cadastroError.classList.remove('hidden');
+          }
+        } catch (error) {
+          cadastroError.textContent = 'Erro de conexão com o servidor';
+          cadastroError.classList.remove('hidden');
+          console.error('Erro ao cadastrar casa:', error);
+        }
+      });
+
+      // ==================== MODAL DE HISTÓRICO ====================
+
+      function abrirModalHistorico() {
+        document.getElementById('modalHistorico').classList.remove('hidden');
+        carregarCasasNoFiltro();
+        carregarHistoricoCompleto();
+      }
+
+      function fecharModalHistorico() {
+        document.getElementById('modalHistorico').classList.add('hidden');
+      }
+
+      async function carregarCasasNoFiltro() {
+        try {
+          const response = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+          const select = document.getElementById('filtroCasa');
+
+          if (data.success && data.casas.length > 0) {
+            select.innerHTML = '<option value="">Todas as Casas</option>';
+            
+            data.casas.forEach(casa => {
+              const option = document.createElement('option');
+              option.value = casa.id;
+              option.textContent = casa.casa;
+              select.appendChild(option);
+            });
+          }
+        } catch (error) {
+          console.error('Erro ao carregar casas no filtro:', error);
+        }
+      }
+
+      async function carregarHistoricoCompleto() {
+        try {
+          const filtroCasa = document.getElementById('filtroCasa').value;
+          const filtroStatus = document.getElementById('filtroStatus').value;
+
+          let url = `${API_URL}/historico-completo?`;
+          if (filtroCasa) url += `casa_bet_id=${filtroCasa}&`;
+          if (filtroStatus) url += `status=${filtroStatus}&`;
+
+          const response = await fetch(url, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            // Atualizar resumo
+            document.getElementById('totalOperacoes').textContent = data.resumo.total;
+            document.getElementById('totalVitorias').textContent = data.resumo.vitorias;
+            document.getElementById('totalDerrotas').textContent = data.resumo.derrotas;
+            
+            const lucroTotal = data.resumo.lucroTotal;
+            const lucroEl = document.getElementById('lucroTotalHistorico');
+            lucroEl.textContent = `R$ ${lucroTotal.toFixed(2)}`;
+            lucroEl.className = lucroTotal >= 0 ? 'text-2xl font-bold text-green-400' : 'text-2xl font-bold text-red-400';
+
+            // Atualizar tabela
+            const tbody = document.getElementById('tabelaHistorico');
+            
+            if (data.operacoes.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-400">Nenhuma operação encontrada</td></tr>';
+            } else {
+              tbody.innerHTML = data.operacoes.map(op => {
+                const statusClass = op.status === 'win' ? 'text-green-400' : op.status === 'loss' ? 'text-red-400' : 'text-yellow-400';
+                const statusText = op.status === 'win' ? 'WIN' : op.status === 'loss' ? 'LOSS' : 'AGUARDANDO';
+                const lucroClass = (op.lucro_prejuizo || 0) >= 0 ? 'text-green-400' : 'text-red-400';
+                
+                return `
+                  <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <td class="py-3 px-2">${new Date(op.created_at).toLocaleString('pt-BR')}</td>
+                    <td class="py-3 px-2">${op.casa || '-'}</td>
+                    <td class="py-3 px-2">${op.antecessor_gatilho}x → ${op.gatilho_original}x</td>
+                    <td class="py-3 px-2">${op.resultado ? op.resultado.toFixed(2) + 'x' : '-'}</td>
+                    <td class="py-3 px-2">${op.gale_atual}/${op.total_gales}</td>
+                    <td class="py-3 px-2"><span class="${statusClass} font-semibold">${statusText}</span></td>
+                    <td class="py-3 px-2 text-right"><span class="${lucroClass} font-semibold">R$ ${(op.lucro_prejuizo || 0).toFixed(2)}</span></td>
+                  </tr>
+                `;
+              }).join('');
+            }
+          }
+        } catch (error) {
+          console.error('Erro ao carregar histórico:', error);
+          document.getElementById('tabelaHistorico').innerHTML = '<tr><td colspan="7" class="text-center py-8 text-red-400">Erro ao carregar histórico</td></tr>';
+        }
+      }
+
+      // ==================== FUNÇÕES DO BOT ====================
 
       async function iniciarBot() {
         const btnIniciar = document.getElementById('btnIniciar');
@@ -563,7 +1287,6 @@
         btnIniciar.disabled = true;
         btnIniciarText.classList.add('hidden');
         btnIniciarSpinner.classList.remove('hidden');
-        log("Iniciando bot...", "info");
 
         try {
           const config = {
@@ -584,24 +1307,25 @@
 
           const response = await fetch(`${API_URL}/start`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${authToken}`
+            },
             body: JSON.stringify(config),
           });
 
           const data = await response.json();
 
           if (data.success) {
-            log("✅ Bot iniciado com sucesso!", "success");
             updateStatusIndicator("running");
             startAutoUpdate();
-            startAutoScreenshot(); // Start automatic screenshots when bot starts
             btnParar.disabled = false;
           } else {
-            log(`❌ Erro: ${data.error}`, "error");
+            alert(`Erro: ${data.error}`);
             btnIniciar.disabled = false;
           }
         } catch (error) {
-          log(`❌ Erro ao iniciar bot: ${error.message}`, "error");
+          alert(`Erro ao iniciar bot: ${error.message}`);
           btnIniciar.disabled = false;
         } finally {
             btnIniciarText.classList.remove('hidden');
@@ -612,8 +1336,12 @@
       async function atualizarHistoricoOperacoes() {
         try {
           const [historicoResponse, currentOperationResponse] = await Promise.all([
-            fetch(`${API_URL}/historico`),
-            fetch(`${API_URL}/current-operation`)
+            fetch(`${API_URL}/historico`, {
+              headers: { "Authorization": `Bearer ${authToken}` }
+            }),
+            fetch(`${API_URL}/current-operation`, {
+              headers: { "Authorization": `Bearer ${authToken}` }
+            })
           ]);
 
           const historicoData = await historicoResponse.json();
@@ -622,12 +1350,12 @@
           const currentOperationId = currentOperationData.success ? currentOperationData.operationId : null;
 
           const list = document.getElementById("historicoOperacoesList");
-          list.innerHTML = ''; // Limpar lista existente
+          list.innerHTML = '';
 
           if (historicoData.success && historicoData.historico.length > 0) {
             historicoData.historico.forEach(op => {
               const statusClass = op.status === 'win' ? 'text-green-400' : op.status === 'loss' ? 'text-red-400' : 'text-yellow-400';
-              const isCurrent = currentOperationId === op.id ? 'border-l-4 border-indigo-500 pl-2' : ''; // Destacar operação atual
+              const isCurrent = currentOperationId === op.id ? 'border-l-4 border-indigo-500 pl-2' : '';
               
               const operationTime = new Date(op.created_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
@@ -644,13 +1372,11 @@
                 </div>
               `;
             });
-            log(`📋 ${historicoData.total} operações listadas`, "info");
           } else {
             list.innerHTML = '<p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>';
           }
         } catch (error) {
           console.error("Erro ao listar histórico de operações:", error);
-          log(`❌ Erro ao listar histórico de operações: ${error.message}`, "error");
         }
       }
 
@@ -660,47 +1386,39 @@
         btnParar.disabled = true;
 
         try {
-          log("Parando bot...", "warning");
-
-          const response = await fetch(`${API_URL}/stop`);
+          const response = await fetch(`${API_URL}/stop`, {
+            headers: { "Authorization": `Bearer ${authToken}` }
+          });
           const data = await response.json();
 
           if (data.success) {
-            log("🛑 Bot parado com sucesso!", "success");
             updateStatusIndicator("stopped");
             stopAutoUpdate();
-            stopAutoScreenshot(); // Stop automatic screenshots when bot stops
             btnIniciar.disabled = false;
 
             if (data.resumo) {
-              log(
-                `📊 Saldo Final: R$ ${data.resumo.saldoFinal.toFixed(2)}`,
-                "info"
-              );
-              log(
-                `💰 Lucro Total: R$ ${data.resumo.lucroTotal.toFixed(2)}`,
-                data.resumo.lucroTotal >= 0 ? "success" : "error"
-              );
+              alert(`Bot parado!\nSaldo Final: R$ ${data.resumo.saldoFinal.toFixed(2)}\nLucro Total: R$ ${data.resumo.lucroTotal.toFixed(2)}`);
             }
           } else {
-            log(`❌ Erro: ${data.error}`, "error");
+            alert(`Erro: ${data.error}`);
             btnParar.disabled = false;
           }
         } catch (error) {
-          log(`❌ Erro ao parar bot: ${error.message}`, "error");
+          alert(`Erro ao parar bot: ${error.message}`);
           btnParar.disabled = false;
         }
       }
 
       async function atualizarStatus() {
         try {
-          const response = await fetch(`${API_URL}/status`);
+          const response = await fetch(`${API_URL}/status`, {
+            headers: { "Authorization": `Bearer ${authToken}` }
+          });
           const data = await response.json();
 
           if (data.success) {
             const status = data.status;
 
-            // Update status
             document.getElementById("statStatus").textContent = status.isRunning
               ? "Rodando"
               : "Parado";
@@ -713,7 +1431,6 @@
             document.getElementById("statGatilhos").textContent =
               status.totalGatilhosMapeados;
 
-            // Update operation
             document.getElementById("targetAntecessor").textContent =
               status.targetAntecessor
                 ? `${status.targetAntecessor.toFixed(2)}x`
@@ -723,7 +1440,6 @@
                 ? `${status.gatilhoOriginal.toFixed(2)}x`
                 : "-";
 
-            // Update balance
             document.getElementById(
               "saldoAtual"
             ).textContent = `R$ ${status.saldo.atual.toFixed(2)}`;
@@ -739,7 +1455,6 @@
                 ? "text-sm font-semibold text-green-400"
                 : "text-sm font-semibold text-red-400";
 
-            // Update status indicator
             if (status.isRunning) {
               updateStatusIndicator(status.isInBet ? "betting" : "running");
               document.getElementById('btnIniciar').disabled = true;
@@ -757,11 +1472,12 @@
 
       async function atualizarSaldo() {
         try {
-          const response = await fetch(`${API_URL}/saldo`);
+          const response = await fetch(`${API_URL}/saldo`, {
+            headers: { "Authorization": `Bearer ${authToken}` }
+          });
           const data = await response.json();
 
           if (data.success) {
-            log("💰 Saldo atualizado", "success");
             const saldo = data.saldo;
             document.getElementById(
               "saldoAtual"
@@ -778,73 +1494,100 @@
                 : "text-sm font-semibold text-red-400";
           }
         } catch (error) {
-          log(`❌ Erro ao atualizar saldo: ${error.message}`, "error");
+          console.error('Erro ao atualizar saldo:', error);
         }
       }
 
       async function listarGatilhos() {
         try {
-          const response = await fetch(`${API_URL}/gatilhos`);
+          const response = await fetch(`${API_URL}/gatilhos`, {
+            headers: { "Authorization": `Bearer ${authToken}` }
+          });
           const data = await response.json();
 
           if (data.success) {
             const list = document.getElementById("gatilhosList");
+            const now = Date.now();
 
-            if (data.gatilhos.length === 0) {
+            // Se recebemos gatilhos da API
+            if (data.gatilhos && data.gatilhos.length > 0) {
+              // Atualizar cache: mesclar novos gatilhos com os existentes
+              data.gatilhos.forEach(novoGatilho => {
+                const key = `${novoGatilho.antecessor}-${novoGatilho.gatilhoPRO}`;
+                const existingIndex = cachedGatilhos.findIndex(
+                  g => `${g.antecessor}-${g.gatilhoPRO}` === key
+                );
+                
+                if (existingIndex >= 0) {
+                  // Atualizar gatilho existente
+                  cachedGatilhos[existingIndex] = {
+                    ...novoGatilho,
+                    lastSeen: now
+                  };
+                } else {
+                  // Adicionar novo gatilho
+                  cachedGatilhos.push({
+                    ...novoGatilho,
+                    lastSeen: now
+                  });
+                }
+              });
+              
+              lastGatilhosUpdate = now;
+            }
+
+            // Se o cache está vazio e não recebemos gatilhos
+            if (cachedGatilhos.length === 0) {
               list.innerHTML =
                 '<p class="text-center text-gray-400 py-8">Nenhum gatilho mapeado ainda</p>';
               return;
             }
 
-            list.innerHTML = data.gatilhos
-              .map(
-                (g) => `
-                        <div class="bg-white/5 rounded-lg p-3 flex items-center justify-between hover:bg-white/10 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div>
-                                    <span class="text-xs text-gray-400">Antecessor</span>
-                                    <p class="font-bold text-indigo-400">${g.antecessor}x</p>
-                                </div>
-                                <span class="text-gray-600">→</span>
-                                <div>
-                                    <span class="text-xs text-gray-400">PRO</span>
-                                    <p class="font-bold text-purple-400">${g.gatilhoPRO}x</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-xs text-gray-400">Encontrado</p>
-                                <p class="font-semibold">${g.vezesEncontrado}x</p>
-                            </div>
-                        </div>
-                    `
-              )
+            // Remover gatilhos muito antigos (mais de 5 minutos sem serem vistos)
+            const TIMEOUT = 5 * 60 * 1000; // 5 minutos
+            cachedGatilhos = cachedGatilhos.filter(g => {
+              return (now - (g.lastSeen || 0)) < TIMEOUT;
+            });
+
+            // Ordenar por vezesEncontrado (decrescente) e depois por lastSeen (mais recente primeiro)
+            cachedGatilhos.sort((a, b) => {
+              if (b.vezesEncontrado !== a.vezesEncontrado) {
+                return b.vezesEncontrado - a.vezesEncontrado;
+              }
+              return (b.lastSeen || 0) - (a.lastSeen || 0);
+            });
+
+            // Renderizar todos os gatilhos do cache
+            list.innerHTML = cachedGatilhos
+              .map((g) => {
+                const isRecent = (now - (g.lastSeen || 0)) < 30000; // Menos de 30 segundos
+                const highlightClass = isRecent ? 'border-l-4 border-green-500' : '';
+                
+                return `
+                  <div class="bg-white/5 rounded-lg p-3 flex items-center justify-between hover:bg-white/10 transition-colors ${highlightClass}">
+                    <div class="flex items-center space-x-4">
+                      <div>
+                        <span class="text-xs text-gray-400">Antecessor</span>
+                        <p class="font-bold text-indigo-400">${g.antecessor}x</p>
+                      </div>
+                      <span class="text-gray-600">→</span>
+                      <div>
+                        <span class="text-xs text-gray-400">PRO</span>
+                        <p class="font-bold text-purple-400">${g.gatilhoPRO}x</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-xs text-gray-400">Encontrado</p>
+                      <p class="font-semibold">${g.vezesEncontrado}x</p>
+                      ${isRecent ? '<span class="text-xs text-green-400">●</span>' : ''}
+                    </div>
+                  </div>
+                `;
+              })
               .join("");
-
-            log(`📋 ${data.total} gatilhos listados`, "info");
           }
         } catch (error) {
-          log(`❌ Erro ao listar gatilhos: ${error.message}`, "error");
-        }
-      }
-
-      async function capturarTela() {
-        try {
-          const response = await fetch(`${API_URL}/captura`);
-          const data = await response.json();
-
-          if (data.success) {
-            document.getElementById(
-              "gameScreenshot"
-            ).src = `data:image/png;base64,${data.image}`;
-          } else {
-            document.getElementById(
-              "gameScreenshot"
-            ).src = `https://via.placeholder.com/400x200?text=Erro+ao+carregar+print`;
-          }
-        } catch (error) {
-          document.getElementById(
-            "gameScreenshot"
-          ).src = `https://via.placeholder.com/400x200?text=Erro+de+conexão`;
+          console.error("Erro ao listar gatilhos:", error);
         }
       }
 
@@ -876,118 +1619,55 @@
           atualizarStatus();
           listarGatilhos();
           atualizarHistoricoOperacoes();
-        }, 3000);
-        log("🔄 Auto-atualização ativada (a cada 3s)", "info");
+        }, 5000);
       }
 
       function stopAutoUpdate() {
         if (updateInterval) {
           clearInterval(updateInterval);
           updateInterval = null;
-          log("⏸️ Auto-atualização pausada", "info");
         }
       }
 
-      function startAutoScreenshot() {
-        if (screenshotInterval) clearInterval(screenshotInterval);
-        screenshotInterval = setInterval(() => {
-          capturarTela();
-        }, 3000); // Capture every 10 seconds
-        log("📸 Auto-captura de tela ativada (a cada 10s)", "info");
-      }
-
-      function stopAutoScreenshot() {
-        if (screenshotInterval) {
-          clearInterval(screenshotInterval);
-          screenshotInterval = null;
-          log("⏸️ Auto-captura de tela pausada", "info");
-        }
-      }
-
-      // Format currency
-      function formatCurrency(value) {
-        return new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(value);
-      }
-
-      // Notification system (optional - if browser supports)
-      function showNotification(title, message, type = "info") {
-        if ("Notification" in window && Notification.permission === "granted") {
-          new Notification(title, {
-            body: message,
-            icon: type === "success" ? "✅" : type === "error" ? "❌" : "ℹ️",
-          });
-        }
-      }
-
-      // Request notification permission on load
-      if ("Notification" in window && Notification.permission === "default") {
-        Notification.requestPermission();
-      }
-
-      // Initialize on load
-      window.addEventListener("load", () => {
-        log("🚀 Operador JetX inicializado", "success");
-        log('ℹ️ Configure os parâmetros e clique em "Iniciar Bot"', "info");
-        log("💡 Sistema de auto-atualização: a cada 3 segundos", "info");
-        updateStatusIndicator("stopped");
-        document.getElementById('btnParar').disabled = true;
-
-        // Carregar dados iniciais ao abrir a página
-        setTimeout(() => {
-          carregarDadosIniciais();
-        }, 1000);
-      });
-
-      // Função para carregar dados iniciais quando a página é aberta/atualizada
       async function carregarDadosIniciais() {
         try {
-          log("🔄 Carregando dados iniciais...", "info");
-          
-          // Tentar obter status atual
           await atualizarStatus();
-          
-          // Carregar gatilhos mapeados
           await listarGatilhos();
-          
-          // Carregar histórico de operações
           await atualizarHistoricoOperacoes();
           
-          // Se o bot estiver rodando, iniciar auto-atualização
           try {
-            const response = await fetch(`${API_URL}/status`);
+            const response = await fetch(`${API_URL}/status`, {
+              headers: { "Authorization": `Bearer ${authToken}` }
+            });
             const data = await response.json();
             
             if (data.success && data.status.isRunning) {
-              log("🔄 Bot está rodando. Iniciando auto-atualização...", "info");
               startAutoUpdate();
-              startAutoScreenshot();
               document.getElementById('btnIniciar').disabled = true;
               document.getElementById('btnParar').disabled = false;
             }
           } catch (error) {
-            log("⚠️ Bot não está rodando ou servidor offline", "warning");
+            console.log("Bot não está rodando");
           }
-          
-          log("✅ Dados iniciais carregados com sucesso!", "success");
         } catch (error) {
-          log(`❌ Erro ao carregar dados iniciais: ${error.message}`, "error");
-          log("⚠️ Verifique se o servidor está rodando na porta 7000", "warning");
+          console.error('Erro ao carregar dados iniciais:', error);
         }
       }
 
-      // Prevent form submission on Enter
-      document.querySelectorAll("input").forEach((input) => {
-        input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-          }
-        });
+      // ==================== INICIALIZAÇÃO ====================
+
+      window.addEventListener("load", () => {
+        updateStatusIndicator("stopped");
+        document.getElementById('btnParar').disabled = true;
+
+        // Configurar form de login
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+        // Verificar se já está autenticado
+        checkAuth();
       });
 
-      // Auto-save config to localStorage
+      // Auto-save config
       function saveConfig() {
         const config = {
           ficha1: document.getElementById("ficha1").value,
@@ -1005,7 +1685,6 @@
         localStorage.setItem("jetx-config", JSON.stringify(config));
       }
 
-      // Load config from localStorage
       function loadConfig() {
         try {
           const saved = localStorage.getItem("jetx-config");
@@ -1026,25 +1705,27 @@
               config.multiplicadorGale1 || "2";
             document.getElementById("multiplicadorGale2").value =
               config.multiplicadorGale2 || "2";
-            log("✅ Configurações anteriores carregadas", "success");
           }
         } catch (error) {
           console.error("Erro ao carregar config:", error);
         }
       }
 
-      // Save config on change
       document.querySelectorAll("input").forEach((input) => {
         input.addEventListener("change", saveConfig);
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+        });
       });
 
-      // Load saved config on startup
       setTimeout(loadConfig, 500);
 
-      // Toggle config card visibility
+      // Toggle config
       const toggleConfigBtn = document.getElementById('toggleConfigBtn');
       const configContent = document.getElementById('configContent');
-      let configMinimized = false; // Initial state
+      let configMinimized = false;
 
       toggleConfigBtn.addEventListener('click', () => {
         configMinimized = !configMinimized;
@@ -1056,47 +1737,6 @@
           toggleConfigBtn.textContent = 'Minimizar';
         }
       });
-
-      // Keyboard shortcuts
-      document.addEventListener("keydown", (e) => {
-        // Ctrl/Cmd + S = Start
-        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
-          e.preventDefault();
-          iniciarBot();
-        }
-        // Ctrl/Cmd + P = Stop
-        if ((e.ctrlKey || e.metaKey) && e.key === "p") {
-          e.preventDefault();
-          pararBot();
-        }
-        // Ctrl/Cmd + R = Refresh balance
-        if ((e.ctrlKey || e.metaKey) && e.key === "r") {
-          e.preventDefault();
-          atualizarSaldo();
-        }
-      });
-
-      // Connection status checker
-      setInterval(async () => {
-        try {
-          const response = await fetch(`${API_URL}/status`, {
-            method: "GET",
-            signal: AbortSignal.timeout(2000),
-          });
-          if (!response.ok) throw new Error("API offline");
-        } catch (error) {
-          // Silently handle connection errors
-        }
-      }, 10000);
-
-      console.log(
-        "%c🚀 Operador JetX v1.0",
-        "color: #667eea; font-size: 20px; font-weight: bold;"
-      );
-      console.log("%cShortcuts:", "color: #8b5cf6; font-weight: bold;");
-      console.log("Ctrl+S = Iniciar Bot");
-      console.log("Ctrl+P = Parar Bot");
-      console.log("Ctrl+R = Atualizar Saldo");
     </script>
   </body>
 </html>
