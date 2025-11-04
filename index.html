@@ -892,8 +892,8 @@
         if (screenshotInterval) clearInterval(screenshotInterval);
         screenshotInterval = setInterval(() => {
           capturarTela();
-        }, 10000); // Capture every 1 second
-        log("📸 Auto-captura de tela ativada (a cada 1s)", "info");
+        }, 10000); // Capture every 10 seconds
+        log("📸 Auto-captura de tela ativada (a cada 10s)", "info");
       }
 
       function stopAutoScreenshot() {
@@ -935,16 +935,48 @@
         updateStatusIndicator("stopped");
         document.getElementById('btnParar').disabled = true;
 
-        // Try to get initial status
+        // Carregar dados iniciais ao abrir a página
         setTimeout(() => {
-          atualizarStatus().catch(() => {
-            log(
-              "⚠️ API não disponível. Inicie o servidor Node.js na porta 7000",
-              "warning"
-            );
-          });
+          carregarDadosIniciais();
         }, 1000);
       });
+
+      // Função para carregar dados iniciais quando a página é aberta/atualizada
+      async function carregarDadosIniciais() {
+        try {
+          log("🔄 Carregando dados iniciais...", "info");
+          
+          // Tentar obter status atual
+          await atualizarStatus();
+          
+          // Carregar gatilhos mapeados
+          await listarGatilhos();
+          
+          // Carregar histórico de operações
+          await atualizarHistoricoOperacoes();
+          
+          // Se o bot estiver rodando, iniciar auto-atualização
+          try {
+            const response = await fetch(`${API_URL}/status`);
+            const data = await response.json();
+            
+            if (data.success && data.status.isRunning) {
+              log("🔄 Bot está rodando. Iniciando auto-atualização...", "info");
+              startAutoUpdate();
+              startAutoScreenshot();
+              document.getElementById('btnIniciar').disabled = true;
+              document.getElementById('btnParar').disabled = false;
+            }
+          } catch (error) {
+            log("⚠️ Bot não está rodando ou servidor offline", "warning");
+          }
+          
+          log("✅ Dados iniciais carregados com sucesso!", "success");
+        } catch (error) {
+          log(`❌ Erro ao carregar dados iniciais: ${error.message}`, "error");
+          log("⚠️ Verifique se o servidor está rodando na porta 7000", "warning");
+        }
+      }
 
       // Prevent form submission on Enter
       document.querySelectorAll("input").forEach((input) => {
