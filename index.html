@@ -222,6 +222,16 @@
                 <span class="hidden sm:inline">Histórico</span>
                 <span class="sm:hidden">Hist.</span>
               </button>
+              <button
+                onclick="abrirModalVelas()"
+                class="px-2 md:px-4 py-1.5 md:py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
+              >
+                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                <span class="hidden sm:inline">Velas</span>
+                <span class="sm:hidden">Velas</span>
+              </button>
               <div class="text-right hidden lg:block">
                 <p class="text-xs text-gray-400">Usuário</p>
                 <p class="font-semibold text-sm" id="userEmail">-</p>
@@ -690,6 +700,91 @@
           <h3 class="text-lg font-semibold mb-4">Minhas Casas</h3>
           <div id="listaCasas" class="space-y-3">
             <p class="text-center text-gray-400 py-8">Carregando...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Velas -->
+    <div id="modalVelas" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+            Histórico de Velas (500 mais recentes)
+          </h2>
+          <button onclick="fecharModalVelas()" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cards de Estatísticas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-lg p-4 shadow-xl">
+            <div class="text-sm opacity-80 mb-1">✅ Wins</div>
+            <div class="text-3xl font-bold" id="velasWins">0</div>
+          </div>
+          <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-4 shadow-xl">
+            <div class="text-sm opacity-80 mb-1">❌ Loss</div>
+            <div class="text-3xl font-bold" id="velasLoss">0</div>
+          </div>
+          <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-4 shadow-xl">
+            <div class="text-sm opacity-80 mb-1">🎯 Assertividade</div>
+            <div class="text-3xl font-bold" id="velasAssertividade">0%</div>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="bg-white/5 rounded-xl p-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300 mb-2">Filtrar por Casa</label>
+              <select
+                id="filtroVelasCasa"
+                onchange="carregarVelas()"
+                class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
+              >
+                <option value="">Todas as Casas</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button
+                onclick="carregarVelas()"
+                class="w-full py-2 bg-indigo-500/20 hover:bg-indigo-500/30 rounded-lg text-sm transition-colors"
+              >
+                Atualizar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="bg-white/5 rounded-xl p-4 mb-4">
+          <h3 class="text-sm font-semibold mb-3">Legenda de Cores:</h3>
+          <div class="flex flex-wrap gap-4 text-xs">
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 bg-orange-500 rounded-lg shadow-lg"></div>
+              <span class="font-semibold">🟠 Vela Gatilho (Antecessor)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 bg-green-500 rounded-lg shadow-lg"></div>
+              <span class="font-semibold">🟢 Win (Vitória)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 bg-red-500 rounded-lg shadow-lg"></div>
+              <span class="font-semibold">🔴 Loss (Derrota)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid de Velas -->
+        <div class="bg-white/5 rounded-xl p-4">
+          <div id="velasGrid" class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
+            <p class="col-span-full text-center text-gray-400 py-8">Carregando...</p>
           </div>
         </div>
       </div>
@@ -1191,6 +1286,341 @@
           console.error('Erro ao cadastrar casa:', error);
         }
       });
+
+      // ==================== MODAL DE VELAS ====================
+
+      function abrirModalVelas() {
+        document.getElementById('modalVelas').classList.remove('hidden');
+        carregarCasasNoFiltroVelas();
+        carregarVelas();
+      }
+
+      function fecharModalVelas() {
+        document.getElementById('modalVelas').classList.add('hidden');
+      }
+
+      async function carregarCasasNoFiltroVelas() {
+        try {
+          const response = await fetch(`${API_URL}/casas`, {
+            headers: {
+              'Authorization': `Bearer ${authToken}`
+            }
+          });
+
+          const data = await response.json();
+          const select = document.getElementById('filtroVelasCasa');
+
+          if (data.success && data.casas.length > 0) {
+            select.innerHTML = '<option value="">Todas as Casas</option>';
+            
+            data.casas.forEach(casa => {
+              const option = document.createElement('option');
+              option.value = casa.id;
+              option.textContent = casa.casa;
+              select.appendChild(option);
+            });
+          }
+        } catch (error) {
+          console.error('Erro ao carregar casas no filtro de velas:', error);
+        }
+      }
+
+      async function carregarVelas() {
+        try {
+          const filtroVelasCasa = document.getElementById('filtroVelasCasa').value;
+
+          // Buscar velas
+          let urlVelas = `${API_URL}/velas?`;
+          if (filtroVelasCasa) urlVelas += `casa_bet_id=${filtroVelasCasa}&`;
+
+          // Buscar operações para marcar as velas
+          let urlOperacoes = `${API_URL}/historico-completo?`;
+          if (filtroVelasCasa) urlOperacoes += `casa_bet_id=${filtroVelasCasa}&`;
+
+          const [velasResponse, operacoesResponse] = await Promise.all([
+            fetch(urlVelas, {
+              headers: { 'Authorization': `Bearer ${authToken}` }
+            }),
+            fetch(urlOperacoes, {
+              headers: { 'Authorization': `Bearer ${authToken}` }
+            })
+          ]);
+
+          const velasData = await velasResponse.json();
+          const operacoesData = await operacoesResponse.json();
+          const grid = document.getElementById('velasGrid');
+
+            console.log('=== DEBUG VELAS ===');
+          console.log('Total de velas recebidas:', velasData.velas?.length || 0);
+          console.log('Total de operações recebidas:', operacoesData.operacoes?.length || 0);
+
+          if (velasData.success && velasData.velas.length > 0) {
+            // Criar mapa de velas marcadas usando ID da vela
+            const velasComBorda = new Map();
+            
+            if (operacoesData.success && operacoesData.operacoes.length > 0) {
+              // Ordenar velas por horário (MAIS ANTIGA PRIMEIRO - ordem cronológica)
+              const velasOrdenadas = [...velasData.velas].sort((a, b) => 
+                new Date(a.horario) - new Date(b.horario)
+              );
+
+              console.log('Velas ordenadas (primeiras 5):', velasOrdenadas.slice(0, 5).map(v => ({
+                id: v.id,
+                numero: v.numero,
+                horario: v.horario
+              })));
+
+              // Rastrear antecessores já vistos (primeira ocorrência não marca tentativas)
+              const antecessoresVistos = new Set();
+
+              // Marcar velas de cada operação
+              operacoesData.operacoes.forEach((op, opIndex) => {
+                console.log(`\n--- Operação ${opIndex + 1} ---`);
+                console.log('Antecessor gatilho:', op.antecessor_gatilho);
+                console.log('Status:', op.status);
+                console.log('Gale atual:', op.gale_atual);
+                console.log('Horário operação:', op.created_at);
+                
+                // Normalizar horário da operação (sem conversão de timezone)
+                const horarioOp = new Date(op.created_at).getTime();
+                const numeroAntecessor = parseFloat(op.antecessor_gatilho);
+                
+                console.log('Horário operação normalizado:', new Date(horarioOp).toISOString());
+                console.log('Procurando vela antecessor com valor:', numeroAntecessor);
+                
+                // Encontrar a vela ANTECESSOR (gatilho): buscar pela data mais próxima ANTES da operação
+                let velaAntecessor = null;
+                let menorDiferenca = Infinity;
+                
+                // Primeiro, tentar encontrar velas com o valor exato do antecessor
+                const velasComValor = velasOrdenadas.filter(v => {
+                  const numeroVela = parseFloat(v.numero);
+                  return Math.abs(numeroVela - numeroAntecessor) < 0.01;
+                });
+                
+                console.log(`Encontradas ${velasComValor.length} velas com valor ${numeroAntecessor}x`);
+                
+                if (velasComValor.length > 0) {
+                  // Mostrar todas as velas candidatas
+                  velasComValor.forEach((vela, idx) => {
+                    const horarioVela = new Date(vela.horario).getTime();
+                    const diferenca = horarioOp - horarioVela;
+                    console.log(`  Candidata ${idx + 1}: ${vela.numero}x em ${new Date(horarioVela).toISOString()} - Diferença: ${(diferenca/1000).toFixed(0)}s`);
+                  });
+                  
+                  // Buscar a vela mais próxima da operação (independente se antes ou depois)
+                  // Isso é necessário porque pode haver diferenças de timezone entre servidor e banco
+                  for (const vela of velasComValor) {
+                    const horarioVela = new Date(vela.horario).getTime();
+                    const diferenca = horarioOp - horarioVela;
+                    
+                    // Aceitar qualquer vela dentro de 2 horas (antes ou depois)
+                    // Isso compensa diferenças de timezone e pequenas variações
+                    if (Math.abs(diferenca) < 7200000) { // 2 horas = 7200000ms
+                      if (Math.abs(diferenca) < Math.abs(menorDiferenca)) {
+                        menorDiferenca = diferenca;
+                        velaAntecessor = vela;
+                      }
+                    }
+                  }
+                  
+                  // Se não encontrou nenhuma, pegar a mais próxima sem limite de tempo
+                  if (!velaAntecessor && velasComValor.length > 0) {
+                    console.log('⚠️ Nenhuma vela dentro da janela de 2h, pegando a mais próxima...');
+                    for (const vela of velasComValor) {
+                      const horarioVela = new Date(vela.horario).getTime();
+                      const diferenca = horarioOp - horarioVela;
+                      
+                      if (Math.abs(diferenca) < Math.abs(menorDiferenca)) {
+                        menorDiferenca = diferenca;
+                        velaAntecessor = vela;
+                      }
+                    }
+                  }
+                }
+
+                if (velaAntecessor) {
+                  console.log('✅ Vela ANTECESSOR encontrada:', { id: velaAntecessor.id, numero: velaAntecessor.numero, horario: velaAntecessor.horario });
+                  console.log('✅ Diferença de tempo:', (menorDiferenca / 1000).toFixed(0), 'segundos');
+                  
+                  // Criar chave única para este antecessor (valor arredondado para 2 casas decimais)
+                  const chaveAntecessor = numeroAntecessor.toFixed(2);
+                  
+                  // Verificar se é a primeira vez que este antecessor aparece
+                  const isPrimeiraVez = !antecessoresVistos.has(chaveAntecessor);
+                  
+                  if (isPrimeiraVez) {
+                    console.log(`🆕 PRIMEIRA VEZ que o antecessor ${chaveAntecessor}x aparece - apenas mapeando, SEM marcar tentativas`);
+                    antecessoresVistos.add(chaveAntecessor);
+                  } else {
+                    console.log(`🔄 Antecessor ${chaveAntecessor}x JÁ VISTO antes - marcando tentativas`);
+                  }
+                  
+                  // Marcar vela ANTECESSOR (laranja) - esta é a vela gatilho
+                  if (!velasComBorda.has(velaAntecessor.id) || 
+                      velasComBorda.get(velaAntecessor.id).tipo !== 'gatilho') {
+                    velasComBorda.set(velaAntecessor.id, { 
+                      tipo: 'gatilho', 
+                      operacao: op,
+                      prioridade: 3,
+                      isPrimeiraVez: isPrimeiraVez
+                    });
+                    console.log('✅ Marcada como GATILHO/ANTECESSOR (laranja)');
+                  }
+
+                  // SOMENTE marcar tentativas se NÃO for a primeira vez que este antecessor aparece
+                  if (!isPrimeiraVez) {
+                    // Encontrar as DUAS PRÓXIMAS velas APÓS o antecessor (por data)
+                    // Estas são as tentativas de aposta
+                    const horarioAntecessor = new Date(velaAntecessor.horario).getTime();
+                    const velasPosteriores = velasOrdenadas.filter(v => 
+                      new Date(v.horario).getTime() > horarioAntecessor
+                    ).sort((a, b) => 
+                      new Date(a.horario) - new Date(b.horario)
+                    );
+
+                    console.log(`Encontradas ${velasPosteriores.length} velas após o antecessor`);
+
+                    // 1ª TENTATIVA (próxima vela APÓS o antecessor)
+                    if (velasPosteriores.length > 0) {
+                      const velaTentativa1 = velasPosteriores[0];
+                      const numeroTentativa1 = parseFloat(velaTentativa1.numero);
+                      console.log('Vela 1ª TENTATIVA:', { id: velaTentativa1.id, numero: numeroTentativa1, horario: velaTentativa1.horario });
+                      
+                      // Verificar se é Win (>= 5x)
+                      const isWinTentativa1 = numeroTentativa1 >= 5;
+                      
+                      const marcacaoAtual = velasComBorda.get(velaTentativa1.id);
+                      if (!marcacaoAtual || marcacaoAtual.prioridade < 2) {
+                        velasComBorda.set(velaTentativa1.id, { 
+                          tipo: 'entrada1', 
+                          operacao: op,
+                          prioridade: 2,
+                          isWin: isWinTentativa1
+                        });
+                        console.log(`✅ Marcada como TENTATIVA 1 (${isWinTentativa1 ? 'WIN >= 5x - verde' : 'LOSS < 5x - vermelho'})`);
+                      }
+                      
+                      // 2ª TENTATIVA - SOMENTE se NÃO foi Win na 1ª tentativa
+                      if (!isWinTentativa1 && velasPosteriores.length > 1) {
+                        const velaTentativa2 = velasPosteriores[1];
+                        const numeroTentativa2 = parseFloat(velaTentativa2.numero);
+                        console.log('Vela 2ª TENTATIVA:', { id: velaTentativa2.id, numero: numeroTentativa2, horario: velaTentativa2.horario });
+                        
+                        // Verificar se é Win (>= 5x)
+                        const isWinTentativa2 = numeroTentativa2 >= 5;
+                        
+                        const marcacaoAtual2 = velasComBorda.get(velaTentativa2.id);
+                        if (!marcacaoAtual2 || marcacaoAtual2.prioridade < 1) {
+                          velasComBorda.set(velaTentativa2.id, { 
+                            tipo: 'entrada2', 
+                            operacao: op,
+                            prioridade: 1,
+                            isWin: isWinTentativa2
+                          });
+                          console.log(`✅ Marcada como TENTATIVA 2 (${isWinTentativa2 ? 'WIN >= 5x - verde' : 'LOSS < 5x - vermelho'})`);
+                        }
+                      } else if (isWinTentativa1) {
+                        console.log('⏭️ 2ª TENTATIVA não marcada - Win na 1ª tentativa');
+                      }
+                    }
+                  } else {
+                    console.log('⏭️ Tentativas NÃO marcadas - primeira vez que este antecessor aparece');
+                  }
+                } else {
+                  console.log('❌ Vela ANTECESSOR NÃO encontrada para esta operação');
+                }
+              });
+            }
+
+            console.log('\n=== RESUMO DAS MARCAÇÕES ===');
+            console.log('Total de velas marcadas:', velasComBorda.size);
+            console.log('Detalhes das marcações:');
+            velasComBorda.forEach((marcacao, velaId) => {
+              console.log(`Vela ID ${velaId}: ${marcacao.tipo} (prioridade ${marcacao.prioridade})`);
+            });
+
+            // Renderizar velas com cores (ordem cronológica inversa para exibição - mais recente primeiro)
+            grid.innerHTML = velasData.velas.map(vela => {
+              const numero = parseFloat(vela.numero);
+              let corClass = '';
+              let corTexto = '';
+              
+              // Verificar se a vela está marcada
+              if (velasComBorda.has(vela.id)) {
+                const marcacao = velasComBorda.get(vela.id);
+                
+                console.log(`Renderizando vela ${vela.id} (${numero}x) - Tipo: ${marcacao.tipo}`);
+                
+                if (marcacao.tipo === 'gatilho') {
+                  // Vela Gatilho = Laranja
+                  corClass = 'bg-orange-500';
+                  corTexto = '🟠 Gatilho (Antecessor)';
+                } else if (marcacao.tipo === 'entrada1' || marcacao.tipo === 'entrada2') {
+                  // Vela de entrada - verificar se é Win ou Loss baseado no valor
+                  // Win = >= 5x, Loss = < 5x
+                  const isWin = marcacao.isWin !== undefined ? marcacao.isWin : (numero >= 5);
+                  
+                  console.log(`Valor da vela: ${numero}x - ${isWin ? 'WIN' : 'LOSS'}`);
+                  
+                  if (isWin) {
+                    // Win (>= 5x) = Verde
+                    corClass = 'bg-green-500';
+                    corTexto = `🟢 Win (${numero.toFixed(2)}x >= 5x)`;
+                  } else {
+                    // Loss (< 5x) = Vermelho
+                    corClass = 'bg-red-500';
+                    corTexto = `🔴 Loss (${numero.toFixed(2)}x < 5x)`;
+                  }
+                }
+              } else {
+                // Vela normal - cor baseada no valor
+                if (numero < 2) {
+                  corClass = 'bg-blue-500';
+                  corTexto = 'Azul';
+                } else if (numero >= 2 && numero < 10) {
+                  corClass = 'bg-purple-500';
+                  corTexto = 'Roxa';
+                } else {
+                  corClass = 'bg-pink-500';
+                  corTexto = 'Rosa';
+                }
+              }
+              
+              const horario = new Date(vela.horario).toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+              });
+              
+              return `
+                <div class="${corClass} rounded-lg p-3 flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer shadow-lg" title="${corTexto} - ${horario}" data-vela-id="${vela.id}">
+                  <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
+                  <span class="text-white text-xs opacity-75">${horario.split(' ')[1]}</span>
+                </div>
+              `;
+            }).join('');
+            
+            // Atualizar estatísticas
+            if (operacoesData.success) {
+              const wins = operacoesData.resumo.vitorias;
+              const loss = operacoesData.resumo.derrotas;
+              const total = operacoesData.resumo.total;
+              const assertividade = total > 0 ? ((wins / total) * 100).toFixed(2) : 0;
+
+              document.getElementById('velasWins').textContent = wins;
+              document.getElementById('velasLoss').textContent = loss;
+              document.getElementById('velasAssertividade').textContent = assertividade + '%';
+            }
+          } else {
+            grid.innerHTML = '<p class="col-span-full text-center text-gray-400 py-8">Nenhuma vela encontrada</p>';
+          }
+        } catch (error) {
+          console.error('Erro ao carregar velas:', error);
+          document.getElementById('velasGrid').innerHTML = '<p class="col-span-full text-center text-red-400 py-8">Erro ao carregar velas</p>';
+        }
+      }
 
       // ==================== MODAL DE HISTÓRICO ====================
 
@@ -1789,6 +2219,9 @@
           toggleConfigBtn.textContent = 'Minimizar';
         }
       });
+
+      // ==================== ESTATÍSTICAS E BORDAS DAS VELAS ====================
+
     </script>
   </body>
 </html>
