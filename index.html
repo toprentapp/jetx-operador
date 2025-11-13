@@ -109,15 +109,15 @@
         .mobile-hidden {
           display: none !important;
         }
-        
+
         .mobile-text-sm {
           font-size: 0.75rem;
         }
-        
+
         .mobile-p-2 {
           padding: 0.5rem;
         }
-        
+
         .mobile-gap-2 {
           gap: 0.5rem;
         }
@@ -166,15 +166,34 @@
             class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 rounded-lg font-semibold transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span id="btnLoginText">Entrar</span>
-            <svg id="btnLoginSpinner" class="animate-spin h-5 w-5 text-white mx-auto hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            <svg
+              id="btnLoginSpinner"
+              class="animate-spin h-5 w-5 text-white mx-auto hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           </button>
         </form>
 
-        <div id="loginError" class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden">
-        </div>
+        <div
+          id="loginError"
+          class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden"
+        ></div>
 
         <div class="mt-6 text-center text-sm text-gray-400">
           <p>Não tem uma conta? Entre em contato com o administrador.</p>
@@ -198,7 +217,9 @@
               </div>
               <div>
                 <h1 class="text-lg md:text-2xl font-bold">Operador JetX</h1>
-                <p class="text-xs md:text-sm text-gray-400 hidden sm:block">Estratégia Antecessores PRO</p>
+                <p class="text-xs md:text-sm text-gray-400 hidden sm:block">
+                  Estratégia Antecessores PRO
+                </p>
               </div>
             </div>
             <div class="flex items-center space-x-2 md:space-x-4 flex-wrap">
@@ -206,8 +227,18 @@
                 onclick="abrirModalCasas()"
                 class="px-2 md:px-4 py-1.5 md:py-2 bg-indigo-500/20 hover:bg-indigo-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
               >
-                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                <svg
+                  class="w-3 h-3 md:w-4 md:h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  ></path>
                 </svg>
                 <span class="hidden sm:inline">Casas Bet</span>
                 <span class="sm:hidden">Casas</span>
@@ -216,8 +247,18 @@
                 onclick="abrirModalHistorico()"
                 class="px-2 md:px-4 py-1.5 md:py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
               >
-                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg
+                  class="w-3 h-3 md:w-4 md:h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
                 </svg>
                 <span class="hidden sm:inline">Histórico</span>
                 <span class="sm:hidden">Hist.</span>
@@ -226,8 +267,18 @@
                 onclick="abrirModalVelas()"
                 class="px-2 md:px-4 py-1.5 md:py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-xs md:text-sm transition-colors flex items-center space-x-1 md:space-x-2"
               >
-                <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                <svg
+                  class="w-3 h-3 md:w-4 md:h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
                 </svg>
                 <span class="hidden sm:inline">Velas</span>
                 <span class="sm:hidden">Velas</span>
@@ -244,7 +295,9 @@
                 <p class="text-xs text-gray-400 hidden sm:block">Status</p>
                 <div class="flex items-center">
                   <span class="status-indicator" id="statusIndicator"></span>
-                  <span class="font-semibold text-xs md:text-sm" id="statusText">Parado</span>
+                  <span class="font-semibold text-xs md:text-sm" id="statusText"
+                    >Parado</span
+                  >
                 </div>
               </div>
               <button
@@ -263,7 +316,9 @@
           <!-- Left Column - Controls -->
           <div class="lg:col-span-1 space-y-3 md:space-y-6">
             <!-- Balance Card -->
-            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in">
+            <div
+              class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in"
+            >
               <h2 class="text-lg font-semibold mb-4 flex items-center">
                 <svg
                   class="w-5 h-5 mr-2"
@@ -290,7 +345,9 @@
                 <div class="grid grid-cols-2 gap-3">
                   <div>
                     <p class="text-xs text-gray-400">Inicial</p>
-                    <p class="text-sm font-semibold" id="saldoInicial">R$ 0,00</p>
+                    <p class="text-sm font-semibold" id="saldoInicial">
+                      R$ 0,00
+                    </p>
                   </div>
                   <div>
                     <p class="text-xs text-gray-400">Lucro/Prejuízo</p>
@@ -307,7 +364,9 @@
             </div>
 
             <!-- Configuration Card -->
-            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in">
+            <div
+              class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 hover-lift slide-in"
+            >
               <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-semibold flex items-center">
                   <svg
@@ -340,7 +399,9 @@
               </div>
               <div id="configContent" class="space-y-4">
                 <div>
-                  <label class="block text-xs md:text-sm text-gray-300 mb-2">Casa de Apostas</label>
+                  <label class="block text-xs md:text-sm text-gray-300 mb-2"
+                    >Casa de Apostas</label
+                  >
                   <select
                     id="casaBetSelect"
                     onchange="ativarCasa()"
@@ -351,7 +412,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 md:gap-3">
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Aposta 1 (R$)</label
                     >
                     <input
@@ -364,7 +426,8 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Aposta 2 (R$)</label
                     >
                     <input
@@ -379,7 +442,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 md:gap-3">
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Cashout 1</label
                     >
                     <input
@@ -392,7 +456,8 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Cashout 2</label
                     >
                     <input
@@ -407,7 +472,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 md:gap-3">
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Stop Win (R$)</label
                     >
                     <input
@@ -420,7 +486,8 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Stop Loss (R$)</label
                     >
                     <input
@@ -435,7 +502,10 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 md:gap-3">
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2">Gales</label>
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                      >Gales</label
+                    >
                     <input
                       type="number"
                       id="gales"
@@ -447,7 +517,8 @@
                     />
                   </div>
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Mult. Gale 1</label
                     >
                     <input
@@ -463,7 +534,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 md:gap-3">
                   <div>
-                    <label class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
+                    <label
+                      class="block text-xs md:text-sm text-gray-300 mb-1 md:mb-2"
                       >Mult. Gale 2</label
                     >
                     <input
@@ -488,9 +560,26 @@
                 class="w-full py-3 md:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl font-semibold text-base md:text-lg shadow-lg shadow-green-500/30 transition-all transform hover:scale-105 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span id="btnIniciarText">🚀 Iniciar Bot</span>
-                <svg id="btnIniciarSpinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <svg
+                  id="btnIniciarSpinner"
+                  class="animate-spin h-5 w-5 text-white hidden"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
                 </svg>
               </button>
               <button
@@ -506,45 +595,81 @@
           <!-- Right Column - Stats & Logs -->
           <div class="lg:col-span-2 space-y-3 md:space-y-6">
             <!-- Stats Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 slide-in">
-              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 slide-in"
+            >
+              <div
+                class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift"
+              >
                 <p class="text-xs text-gray-400 mb-1">Status</p>
-                <p class="text-sm md:text-lg font-bold" id="statStatus">Parado</p>
+                <p class="text-sm md:text-lg font-bold" id="statStatus">
+                  Parado
+                </p>
               </div>
-              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+              <div
+                class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift"
+              >
                 <p class="text-xs text-gray-400 mb-1">Gale</p>
                 <p class="text-sm md:text-lg font-bold" id="statGale">0/0</p>
               </div>
-              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+              <div
+                class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift"
+              >
                 <p class="text-xs text-gray-400 mb-1">Investido</p>
-                <p class="text-sm md:text-lg font-bold text-orange-400" id="statInvestido">
+                <p
+                  class="text-sm md:text-lg font-bold text-orange-400"
+                  id="statInvestido"
+                >
                   R$ 0,00
                 </p>
               </div>
-              <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift">
+              <div
+                class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4 hover-lift"
+              >
                 <p class="text-xs text-gray-400 mb-1">Gatilhos</p>
-                <p class="text-sm md:text-lg font-bold text-purple-400" id="statGatilhos">
+                <p
+                  class="text-sm md:text-lg font-bold text-purple-400"
+                  id="statGatilhos"
+                >
                   0
                 </p>
               </div>
             </div>
 
             <!-- Card de Velas Recentes -->
-            <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in" style="max-height: 150px;">
+            <div
+              class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in"
+              style="max-height: 150px"
+            >
               <h2 class="text-sm font-semibold mb-2 flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
                 </svg>
                 Velas Recentes (10 últimas)
               </h2>
-              <div id="velasRecentesList" class="flex items-center space-x-2 overflow-x-auto">
+              <div
+                id="velasRecentesList"
+                class="flex items-center space-x-2 overflow-x-auto"
+              >
                 <p class="text-xs text-gray-400">Aguardando dados...</p>
               </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
               <!-- Operation Info -->
-              <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in">
+              <div
+                class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in"
+              >
                 <h2 class="text-lg font-semibold mb-4 flex items-center">
                   <svg
                     class="w-5 h-5 mr-2"
@@ -582,18 +707,35 @@
                   </div>
                 </div>
                 <h3 class="text-md font-semibold mb-2 flex items-center">
-                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <svg
+                    class="w-4 h-4 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
                   </svg>
                   Histórico de Operações
                 </h3>
-                <div id="historicoOperacoesList" class="max-h-48 overflow-y-auto space-y-2 text-sm">
-                  <p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>
+                <div
+                  id="historicoOperacoesList"
+                  class="max-h-48 overflow-y-auto space-y-2 text-sm"
+                >
+                  <p class="text-center text-gray-500 py-4">
+                    Nenhuma operação recente
+                  </p>
                 </div>
               </div>
 
               <!-- Triggers List -->
-              <div class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in">
+              <div
+                class="glass-effect rounded-xl md:rounded-2xl p-4 md:p-6 slide-in"
+              >
                 <div class="flex items-center justify-between mb-4">
                   <h2 class="text-lg font-semibold flex items-center">
                     <svg
@@ -618,7 +760,10 @@
                     Atualizar
                   </button>
                 </div>
-                <div id="gatilhosList" class="max-h-64 overflow-y-auto space-y-2">
+                <div
+                  id="gatilhosList"
+                  class="max-h-64 overflow-y-auto space-y-2"
+                >
                   <p class="text-center text-gray-400 py-8">
                     Nenhum gatilho mapeado ainda
                   </p>
@@ -631,18 +776,46 @@
     </div>
 
     <!-- Modal de Casas Bet -->
-    <div id="modalCasas" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div class="glass-effect rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto slide-in">
+    <div
+      id="modalCasas"
+      class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="glass-effect rounded-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto slide-in"
+      >
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-2xl font-bold flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            <svg
+              class="w-6 h-6 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
             </svg>
             Gerenciar Casas de Apostas
           </h2>
-          <button onclick="fecharModalCasas()" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <button
+            onclick="fecharModalCasas()"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
             </svg>
           </button>
         </div>
@@ -653,18 +826,24 @@
           <form id="formCadastrarCasa" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm text-gray-300 mb-2">Casa de Apostas *</label>
+                <label class="block text-sm text-gray-300 mb-2"
+                  >Casa de Apostas *</label
+                >
                 <select
                   id="novaCasa"
                   required
                   class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors"
                 >
                   <option value="">Selecione...</option>
+                  <option value="ApostaTudo">ApostaTudo</option>
                   <option value="ApostaX">ApostaX</option>
+                  <option value="Betesporte">Betesporte</option>
                 </select>
               </div>
               <div>
-                <label class="block text-sm text-gray-300 mb-2">Login/Email *</label>
+                <label class="block text-sm text-gray-300 mb-2"
+                  >Login/Email *</label
+                >
                 <input
                   type="text"
                   id="novoLogin"
@@ -691,8 +870,14 @@
               Adicionar Casa
             </button>
           </form>
-          <div id="cadastroError" class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden"></div>
-          <div id="cadastroSuccess" class="mt-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm hidden"></div>
+          <div
+            id="cadastroError"
+            class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm hidden"
+          ></div>
+          <div
+            id="cadastroSuccess"
+            class="mt-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm hidden"
+          ></div>
         </div>
 
         <!-- Lista de Casas -->
@@ -706,33 +891,67 @@
     </div>
 
     <!-- Modal de Velas -->
-    <div id="modalVelas" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in">
+    <div
+      id="modalVelas"
+      class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in"
+      >
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-2xl font-bold flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            <svg
+              class="w-6 h-6 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
             </svg>
             Histórico de Velas (500 mais recentes)
           </h2>
-          <button onclick="fecharModalVelas()" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <button
+            onclick="fecharModalVelas()"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
             </svg>
           </button>
         </div>
 
         <!-- Cards de Estatísticas -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-lg p-4 shadow-xl">
+          <div
+            class="bg-gradient-to-br from-green-600 to-green-700 rounded-lg p-4 shadow-xl"
+          >
             <div class="text-sm opacity-80 mb-1">✅ Wins</div>
             <div class="text-3xl font-bold" id="velasWins">0</div>
           </div>
-          <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-4 shadow-xl">
+          <div
+            class="bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-4 shadow-xl"
+          >
             <div class="text-sm opacity-80 mb-1">❌ Loss</div>
             <div class="text-3xl font-bold" id="velasLoss">0</div>
           </div>
-          <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-4 shadow-xl">
+          <div
+            class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-4 shadow-xl"
+          >
             <div class="text-sm opacity-80 mb-1">🎯 Assertividade</div>
             <div class="text-3xl font-bold" id="velasAssertividade">0%</div>
           </div>
@@ -742,7 +961,9 @@
         <div class="bg-white/5 rounded-xl p-4 mb-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm text-gray-300 mb-2">Filtrar por Casa</label>
+              <label class="block text-sm text-gray-300 mb-2"
+                >Filtrar por Casa</label
+              >
               <select
                 id="filtroVelasCasa"
                 onchange="carregarVelas()"
@@ -783,26 +1004,59 @@
 
         <!-- Grid de Velas -->
         <div class="bg-white/5 rounded-xl p-4">
-          <div id="velasGrid" class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
-            <p class="col-span-full text-center text-gray-400 py-8">Carregando...</p>
+          <div
+            id="velasGrid"
+            class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2"
+          >
+            <p class="col-span-full text-center text-gray-400 py-8">
+              Carregando...
+            </p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal de Histórico -->
-    <div id="modalHistorico" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in">
+    <div
+      id="modalHistorico"
+      class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="glass-effect rounded-2xl p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto slide-in"
+      >
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-2xl font-bold flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <svg
+              class="w-6 h-6 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
             </svg>
             Histórico de Operações
           </h2>
-          <button onclick="fecharModalHistorico()" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <button
+            onclick="fecharModalHistorico()"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
             </svg>
           </button>
         </div>
@@ -811,7 +1065,9 @@
         <div class="bg-white/5 rounded-xl p-4 mb-6">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label class="block text-sm text-gray-300 mb-2">Filtrar por Casa</label>
+              <label class="block text-sm text-gray-300 mb-2"
+                >Filtrar por Casa</label
+              >
               <select
                 id="filtroCasa"
                 onchange="carregarHistoricoCompleto()"
@@ -821,7 +1077,9 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm text-gray-300 mb-2">Filtrar por Status</label>
+              <label class="block text-sm text-gray-300 mb-2"
+                >Filtrar por Status</label
+              >
               <select
                 id="filtroStatus"
                 onchange="carregarHistoricoCompleto()"
@@ -851,7 +1109,9 @@
           </div>
           <div class="bg-green-500/10 rounded-xl p-4">
             <p class="text-xs text-gray-400 mb-1">Vitórias</p>
-            <p class="text-2xl font-bold text-green-400" id="totalVitorias">0</p>
+            <p class="text-2xl font-bold text-green-400" id="totalVitorias">
+              0
+            </p>
           </div>
           <div class="bg-red-500/10 rounded-xl p-4">
             <p class="text-xs text-gray-400 mb-1">Derrotas</p>
@@ -879,7 +1139,9 @@
             </thead>
             <tbody id="tabelaHistorico">
               <tr>
-                <td colspan="7" class="text-center py-8 text-gray-400">Carregando...</td>
+                <td colspan="7" class="text-center py-8 text-gray-400">
+                  Carregando...
+                </td>
               </tr>
             </tbody>
           </table>
@@ -893,39 +1155,42 @@
       let authToken = null;
       let currentUser = null;
       let casaAtivaInfo = null;
-      
+
       // Cache para detectar mudanças
       let lastStatusData = null;
       let lastGatilhosData = null;
       let lastHistoricoData = null;
-      
+
       // Cache de gatilhos para evitar perda de dados quando API retorna menos gatilhos
       let cachedGatilhos = [];
       let lastGatilhosUpdate = null;
+      // Interval para atualizar jogo atual
+      let jogoAtualInterval = null;
+      let velaAtual = null;
 
       // ==================== AUTENTICAÇÃO ====================
 
       async function handleLogin(e) {
         e.preventDefault();
-        
-        const btnLogin = document.getElementById('btnLogin');
-        const btnLoginText = document.getElementById('btnLoginText');
-        const btnLoginSpinner = document.getElementById('btnLoginSpinner');
-        const loginError = document.getElementById('loginError');
-        
+
+        const btnLogin = document.getElementById("btnLogin");
+        const btnLoginText = document.getElementById("btnLoginText");
+        const btnLoginSpinner = document.getElementById("btnLoginSpinner");
+        const loginError = document.getElementById("loginError");
+
         btnLogin.disabled = true;
-        btnLoginText.classList.add('hidden');
-        btnLoginSpinner.classList.remove('hidden');
-        loginError.classList.add('hidden');
+        btnLoginText.classList.add("hidden");
+        btnLoginSpinner.classList.remove("hidden");
+        loginError.classList.add("hidden");
 
         try {
-          const email = document.getElementById('loginEmail').value;
-          const password = document.getElementById('loginPassword').value;
+          const email = document.getElementById("loginEmail").value;
+          const password = document.getElementById("loginPassword").value;
 
           const response = await fetch(`${API_URL}/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
           });
 
           const data = await response.json();
@@ -933,124 +1198,130 @@
           if (data.success) {
             authToken = data.session.access_token;
             currentUser = data.user;
-            
+
             // Salvar token no localStorage
-            localStorage.setItem('jetx_auth_token', authToken);
-            localStorage.setItem('jetx_user', JSON.stringify(currentUser));
-            
+            localStorage.setItem("jetx_auth_token", authToken);
+            localStorage.setItem("jetx_user", JSON.stringify(currentUser));
+
             // Carregar casas do usuário
             await carregarCasas();
-            
+
             // Mostrar dashboard
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('mainDashboard').classList.remove('hidden');
-            document.getElementById('userEmail').textContent = currentUser.email;
-            
+            document.getElementById("loginScreen").classList.add("hidden");
+            document.getElementById("mainDashboard").classList.remove("hidden");
+            document.getElementById("userEmail").textContent =
+              currentUser.email;
+
             // Carregar dados iniciais
             setTimeout(() => {
               carregarDadosIniciais();
             }, 1000);
           } else {
-            loginError.textContent = data.error || 'Erro ao fazer login';
-            loginError.classList.remove('hidden');
+            loginError.textContent = data.error || "Erro ao fazer login";
+            loginError.classList.remove("hidden");
           }
         } catch (error) {
-          loginError.textContent = 'Erro de conexão com o servidor';
-          loginError.classList.remove('hidden');
-          console.error('Erro no login:', error);
+          loginError.textContent = "Erro de conexão com o servidor";
+          loginError.classList.remove("hidden");
+          console.error("Erro no login:", error);
         } finally {
           btnLogin.disabled = false;
-          btnLoginText.classList.remove('hidden');
-          btnLoginSpinner.classList.add('hidden');
+          btnLoginText.classList.remove("hidden");
+          btnLoginSpinner.classList.add("hidden");
         }
       }
 
       async function logout() {
         try {
           await fetch(`${API_URL}/auth/logout`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
         } catch (error) {
-          console.error('Erro no logout:', error);
+          console.error("Erro no logout:", error);
         }
-        
+
         // Limpar dados locais
-        localStorage.removeItem('jetx_auth_token');
-        localStorage.removeItem('jetx_user');
+        localStorage.removeItem("jetx_auth_token");
+        localStorage.removeItem("jetx_user");
         authToken = null;
         currentUser = null;
         casaAtivaInfo = null;
-        
+
         // Parar atualizações
         stopAutoUpdate();
-        
+        pararMonitoramentoJogoAtual(); // Adicione esta linha
+
         // Mostrar tela de login
-        document.getElementById('mainDashboard').classList.add('hidden');
-        document.getElementById('loginScreen').classList.remove('hidden');
+        document.getElementById("mainDashboard").classList.add("hidden");
+        document.getElementById("loginScreen").classList.remove("hidden");
       }
 
       async function carregarCasas() {
         try {
           const response = await fetch(`${API_URL}/casas`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
 
           if (data.success && data.casas.length > 0) {
-            const casaAtiva = data.casas.find(c => c.ativa);
+            const casaAtiva = data.casas.find((c) => c.ativa);
             if (casaAtiva) {
               casaAtivaInfo = casaAtiva;
-              document.getElementById('casaAtiva').textContent = casaAtiva.casa;
+              document.getElementById("casaAtiva").textContent = casaAtiva.casa;
             } else {
-              document.getElementById('casaAtiva').textContent = 'Nenhuma ativa';
+              document.getElementById("casaAtiva").textContent =
+                "Nenhuma ativa";
             }
           } else {
-            document.getElementById('casaAtiva').textContent = 'Sem casas';
+            document.getElementById("casaAtiva").textContent = "Sem casas";
           }
         } catch (error) {
-          console.error('Erro ao carregar casas:', error);
+          console.error("Erro ao carregar casas:", error);
         }
       }
 
       function checkAuth() {
-        const savedToken = localStorage.getItem('jetx_auth_token');
-        const savedUser = localStorage.getItem('jetx_user');
-        
+        const savedToken = localStorage.getItem("jetx_auth_token");
+        const savedUser = localStorage.getItem("jetx_user");
+
         if (savedToken && savedUser) {
           authToken = savedToken;
           currentUser = JSON.parse(savedUser);
-          
+
           // Verificar se o token ainda é válido
           fetch(`${API_URL}/status`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           })
-          .then(response => {
-            if (response.ok) {
-              // Token válido, mostrar dashboard
-              document.getElementById('loginScreen').classList.add('hidden');
-              document.getElementById('mainDashboard').classList.remove('hidden');
-              document.getElementById('userEmail').textContent = currentUser.email;
-              
-              carregarCasas();
-              carregarCasasNoSelect();
-              carregarDadosIniciais();
-            } else {
-              // Token inválido, fazer logout
+            .then((response) => {
+              if (response.ok) {
+                // Token válido, mostrar dashboard
+                document.getElementById("loginScreen").classList.add("hidden");
+                document
+                  .getElementById("mainDashboard")
+                  .classList.remove("hidden");
+                document.getElementById("userEmail").textContent =
+                  currentUser.email;
+
+                carregarCasas();
+                carregarCasasNoSelect();
+                carregarDadosIniciais();
+              } else {
+                // Token inválido, fazer logout
+                logout();
+              }
+            })
+            .catch(() => {
+              // Erro de conexão, mostrar login
               logout();
-            }
-          })
-          .catch(() => {
-            // Erro de conexão, mostrar login
-            logout();
-          });
+            });
         }
       }
 
@@ -1058,18 +1329,18 @@
         try {
           const response = await fetch(`${API_URL}/casas`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
-          const select = document.getElementById('casaBetSelect');
+          const select = document.getElementById("casaBetSelect");
 
           if (data.success && data.casas.length > 0) {
             select.innerHTML = '<option value="">Selecione uma casa</option>';
-            
-            data.casas.forEach(casa => {
-              const option = document.createElement('option');
+
+            data.casas.forEach((casa) => {
+              const option = document.createElement("option");
               option.value = casa.id;
               option.textContent = `${casa.casa} - ${casa.login}`;
               if (casa.ativa) {
@@ -1078,16 +1349,18 @@
               select.appendChild(option);
             });
           } else {
-            select.innerHTML = '<option value="">Nenhuma casa cadastrada</option>';
+            select.innerHTML =
+              '<option value="">Nenhuma casa cadastrada</option>';
           }
         } catch (error) {
-          console.error('Erro ao carregar casas no select:', error);
-          document.getElementById('casaBetSelect').innerHTML = '<option value="">Erro ao carregar</option>';
+          console.error("Erro ao carregar casas no select:", error);
+          document.getElementById("casaBetSelect").innerHTML =
+            '<option value="">Erro ao carregar</option>';
         }
       }
 
       async function ativarCasa() {
-        const select = document.getElementById('casaBetSelect');
+        const select = document.getElementById("casaBetSelect");
         const casaId = select.value;
 
         if (!casaId) {
@@ -1096,10 +1369,10 @@
 
         try {
           const response = await fetch(`${API_URL}/casas/${casaId}/ativar`, {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
@@ -1109,52 +1382,64 @@
             await carregarCasasNoSelect();
           }
         } catch (error) {
-          console.error('Erro ao ativar casa:', error);
+          console.error("Erro ao ativar casa:", error);
         }
       }
 
       // ==================== MODAL DE CASAS ====================
 
       function abrirModalCasas() {
-        document.getElementById('modalCasas').classList.remove('hidden');
+        document.getElementById("modalCasas").classList.remove("hidden");
         listarCasasNoModal();
       }
 
       function fecharModalCasas() {
-        document.getElementById('modalCasas').classList.add('hidden');
+        document.getElementById("modalCasas").classList.add("hidden");
       }
 
       async function listarCasasNoModal() {
         try {
           const response = await fetch(`${API_URL}/casas`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
-          const lista = document.getElementById('listaCasas');
+          const lista = document.getElementById("listaCasas");
 
           if (data.success && data.casas.length > 0) {
-            lista.innerHTML = data.casas.map(casa => `
+            lista.innerHTML = data.casas
+              .map(
+                (casa) => `
               <div class="bg-white/5 rounded-lg p-4 flex items-center justify-between hover:bg-white/10 transition-colors">
                 <div class="flex-1">
                   <div class="flex items-center space-x-2 mb-1">
                     <h4 class="font-semibold">${casa.casa}</h4>
-                    ${casa.ativa ? '<span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Ativa</span>' : ''}
+                    ${
+                      casa.ativa
+                        ? '<span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Ativa</span>'
+                        : ""
+                    }
                   </div>
                   <p class="text-sm text-gray-400">Login: ${casa.login}</p>
-                  <p class="text-xs text-gray-500">Cadastrada em: ${new Date(casa.created_at).toLocaleDateString('pt-BR')}</p>
+                  <p class="text-xs text-gray-500">Cadastrada em: ${new Date(
+                    casa.created_at
+                  ).toLocaleDateString("pt-BR")}</p>
                 </div>
                 <div class="flex items-center space-x-2">
-                  ${!casa.ativa ? `
+                  ${
+                    !casa.ativa
+                      ? `
                     <button
                       onclick="ativarCasaModal(${casa.id})"
                       class="px-3 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg text-sm transition-colors"
                     >
                       Ativar
                     </button>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                   <button
                     onclick="removerCasa(${casa.id})"
                     class="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg text-sm transition-colors"
@@ -1163,23 +1448,27 @@
                   </button>
                 </div>
               </div>
-            `).join('');
+            `
+              )
+              .join("");
           } else {
-            lista.innerHTML = '<p class="text-center text-gray-400 py-8">Nenhuma casa cadastrada ainda</p>';
+            lista.innerHTML =
+              '<p class="text-center text-gray-400 py-8">Nenhuma casa cadastrada ainda</p>';
           }
         } catch (error) {
-          console.error('Erro ao listar casas:', error);
-          document.getElementById('listaCasas').innerHTML = '<p class="text-center text-red-400 py-8">Erro ao carregar casas</p>';
+          console.error("Erro ao listar casas:", error);
+          document.getElementById("listaCasas").innerHTML =
+            '<p class="text-center text-red-400 py-8">Erro ao carregar casas</p>';
         }
       }
 
       async function ativarCasaModal(casaId) {
         try {
           const response = await fetch(`${API_URL}/casas/${casaId}/ativar`, {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
@@ -1190,21 +1479,21 @@
             await listarCasasNoModal();
           }
         } catch (error) {
-          console.error('Erro ao ativar casa:', error);
+          console.error("Erro ao ativar casa:", error);
         }
       }
 
       async function removerCasa(casaId) {
-        if (!confirm('Tem certeza que deseja remover esta casa?')) {
+        if (!confirm("Tem certeza que deseja remover esta casa?")) {
           return;
         }
 
         try {
           const response = await fetch(`${API_URL}/casas/${casaId}`, {
-            method: 'DELETE',
+            method: "DELETE",
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
@@ -1215,119 +1504,125 @@
             await listarCasasNoModal();
           }
         } catch (error) {
-          console.error('Erro ao remover casa:', error);
+          console.error("Erro ao remover casa:", error);
         }
       }
 
       // Formulário de cadastro
-      document.getElementById('formCadastrarCasa').addEventListener('submit', async (e) => {
-        e.preventDefault();
+      document
+        .getElementById("formCadastrarCasa")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-        const cadastroError = document.getElementById('cadastroError');
-        const cadastroSuccess = document.getElementById('cadastroSuccess');
-        cadastroError.classList.add('hidden');
-        cadastroSuccess.classList.add('hidden');
+          const cadastroError = document.getElementById("cadastroError");
+          const cadastroSuccess = document.getElementById("cadastroSuccess");
+          cadastroError.classList.add("hidden");
+          cadastroSuccess.classList.add("hidden");
 
-        const casa = document.getElementById('novaCasa').value;
-        const login = document.getElementById('novoLogin').value;
-        const senha = document.getElementById('novaSenha').value;
+          const casa = document.getElementById("novaCasa").value;
+          const login = document.getElementById("novoLogin").value;
+          const senha = document.getElementById("novaSenha").value;
 
-        try {
-          // Verificar se o usuário já tem uma conta cadastrada para esta casa
-          const casasResponse = await fetch(`${API_URL}/casas`, {
-            headers: {
-              'Authorization': `Bearer ${authToken}`
+          try {
+            // Verificar se o usuário já tem uma conta cadastrada para esta casa
+            const casasResponse = await fetch(`${API_URL}/casas`, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+
+            const casasData = await casasResponse.json();
+
+            if (casasData.success && casasData.casas.length > 0) {
+              // Verificar se já existe uma conta para esta casa
+              const casaExistente = casasData.casas.find(
+                (c) => c.casa === casa
+              );
+
+              if (casaExistente) {
+                cadastroError.textContent = `Você já possui uma conta cadastrada para ${casa}. Apenas uma conta por casa é permitida.`;
+                cadastroError.classList.remove("hidden");
+                return;
+              }
             }
-          });
 
-          const casasData = await casasResponse.json();
+            // Prosseguir com o cadastro
+            const response = await fetch(`${API_URL}/casas`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${authToken}`,
+              },
+              body: JSON.stringify({ casa, login, senha }),
+            });
 
-          if (casasData.success && casasData.casas.length > 0) {
-            // Verificar se já existe uma conta para esta casa
-            const casaExistente = casasData.casas.find(c => c.casa === casa);
-            
-            if (casaExistente) {
-              cadastroError.textContent = `Você já possui uma conta cadastrada para ${casa}. Apenas uma conta por casa é permitida.`;
-              cadastroError.classList.remove('hidden');
-              return;
+            const data = await response.json();
+
+            if (data.success) {
+              cadastroSuccess.textContent = "Casa cadastrada com sucesso!";
+              cadastroSuccess.classList.remove("hidden");
+
+              // Limpar formulário
+              document.getElementById("formCadastrarCasa").reset();
+
+              // Atualizar listas
+              await carregarCasas();
+              await carregarCasasNoSelect();
+              await listarCasasNoModal();
+            } else {
+              cadastroError.textContent =
+                data.error || "Erro ao cadastrar casa";
+              cadastroError.classList.remove("hidden");
             }
+          } catch (error) {
+            cadastroError.textContent = "Erro de conexão com o servidor";
+            cadastroError.classList.remove("hidden");
+            console.error("Erro ao cadastrar casa:", error);
           }
-
-          // Prosseguir com o cadastro
-          const response = await fetch(`${API_URL}/casas`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${authToken}`
-            },
-            body: JSON.stringify({ casa, login, senha })
-          });
-
-          const data = await response.json();
-
-          if (data.success) {
-            cadastroSuccess.textContent = 'Casa cadastrada com sucesso!';
-            cadastroSuccess.classList.remove('hidden');
-            
-            // Limpar formulário
-            document.getElementById('formCadastrarCasa').reset();
-            
-            // Atualizar listas
-            await carregarCasas();
-            await carregarCasasNoSelect();
-            await listarCasasNoModal();
-          } else {
-            cadastroError.textContent = data.error || 'Erro ao cadastrar casa';
-            cadastroError.classList.remove('hidden');
-          }
-        } catch (error) {
-          cadastroError.textContent = 'Erro de conexão com o servidor';
-          cadastroError.classList.remove('hidden');
-          console.error('Erro ao cadastrar casa:', error);
-        }
-      });
+        });
 
       // ==================== MODAL DE VELAS ====================
 
       function abrirModalVelas() {
-        document.getElementById('modalVelas').classList.remove('hidden');
+        document.getElementById("modalVelas").classList.remove("hidden");
         carregarCasasNoFiltroVelas();
         carregarVelas();
       }
 
       function fecharModalVelas() {
-        document.getElementById('modalVelas').classList.add('hidden');
+        document.getElementById("modalVelas").classList.add("hidden");
       }
 
       async function carregarCasasNoFiltroVelas() {
         try {
           const response = await fetch(`${API_URL}/casas`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
-          const select = document.getElementById('filtroVelasCasa');
+          const select = document.getElementById("filtroVelasCasa");
 
           if (data.success && data.casas.length > 0) {
             select.innerHTML = '<option value="">Todas as Casas</option>';
-            
-            data.casas.forEach(casa => {
-              const option = document.createElement('option');
+
+            data.casas.forEach((casa) => {
+              const option = document.createElement("option");
               option.value = casa.id;
               option.textContent = casa.casa;
               select.appendChild(option);
             });
           }
         } catch (error) {
-          console.error('Erro ao carregar casas no filtro de velas:', error);
+          console.error("Erro ao carregar casas no filtro de velas:", error);
         }
       }
 
       async function carregarVelas() {
         try {
-          const filtroVelasCasa = document.getElementById('filtroVelasCasa').value;
+          const filtroVelasCasa =
+            document.getElementById("filtroVelasCasa").value;
 
           // Buscar velas
           let urlVelas = `${API_URL}/velas?`;
@@ -1335,40 +1630,50 @@
 
           // Buscar operações para marcar as velas
           let urlOperacoes = `${API_URL}/historico-completo?`;
-          if (filtroVelasCasa) urlOperacoes += `casa_bet_id=${filtroVelasCasa}&`;
+          if (filtroVelasCasa)
+            urlOperacoes += `casa_bet_id=${filtroVelasCasa}&`;
 
           const [velasResponse, operacoesResponse] = await Promise.all([
             fetch(urlVelas, {
-              headers: { 'Authorization': `Bearer ${authToken}` }
+              headers: { Authorization: `Bearer ${authToken}` },
             }),
             fetch(urlOperacoes, {
-              headers: { 'Authorization': `Bearer ${authToken}` }
-            })
+              headers: { Authorization: `Bearer ${authToken}` },
+            }),
           ]);
 
           const velasData = await velasResponse.json();
           const operacoesData = await operacoesResponse.json();
-          const grid = document.getElementById('velasGrid');
+          const grid = document.getElementById("velasGrid");
 
-            console.log('=== DEBUG VELAS ===');
-          console.log('Total de velas recebidas:', velasData.velas?.length || 0);
-          console.log('Total de operações recebidas:', operacoesData.operacoes?.length || 0);
+          console.log("=== DEBUG VELAS ===");
+          console.log(
+            "Total de velas recebidas:",
+            velasData.velas?.length || 0
+          );
+          console.log(
+            "Total de operações recebidas:",
+            operacoesData.operacoes?.length || 0
+          );
 
           if (velasData.success && velasData.velas.length > 0) {
             // Criar mapa de velas marcadas usando ID da vela
             const velasComBorda = new Map();
-            
+
             if (operacoesData.success && operacoesData.operacoes.length > 0) {
               // Ordenar velas por horário (MAIS ANTIGA PRIMEIRO - ordem cronológica)
-              const velasOrdenadas = [...velasData.velas].sort((a, b) => 
-                new Date(a.horario) - new Date(b.horario)
+              const velasOrdenadas = [...velasData.velas].sort(
+                (a, b) => new Date(a.horario) - new Date(b.horario)
               );
 
-              console.log('Velas ordenadas (primeiras 5):', velasOrdenadas.slice(0, 5).map(v => ({
-                id: v.id,
-                numero: v.numero,
-                horario: v.horario
-              })));
+              console.log(
+                "Velas ordenadas (primeiras 5):",
+                velasOrdenadas.slice(0, 5).map((v) => ({
+                  id: v.id,
+                  numero: v.numero,
+                  horario: v.horario,
+                }))
+              );
 
               // Rastrear antecessores já vistos (primeira ocorrência não marca tentativas)
               const antecessoresVistos = new Set();
@@ -1376,61 +1681,78 @@
               // Marcar velas de cada operação
               operacoesData.operacoes.forEach((op, opIndex) => {
                 console.log(`\n--- Operação ${opIndex + 1} ---`);
-                console.log('Antecessor gatilho:', op.antecessor_gatilho);
-                console.log('Status:', op.status);
-                console.log('Gale atual:', op.gale_atual);
-                console.log('Horário operação:', op.created_at);
-                
+                console.log("Antecessor gatilho:", op.antecessor_gatilho);
+                console.log("Status:", op.status);
+                console.log("Gale atual:", op.gale_atual);
+                console.log("Horário operação:", op.created_at);
+
                 // Normalizar horário da operação (sem conversão de timezone)
                 const horarioOp = new Date(op.created_at).getTime();
                 const numeroAntecessor = parseFloat(op.antecessor_gatilho);
-                
-                console.log('Horário operação normalizado:', new Date(horarioOp).toISOString());
-                console.log('Procurando vela antecessor com valor:', numeroAntecessor);
-                
+
+                console.log(
+                  "Horário operação normalizado:",
+                  new Date(horarioOp).toISOString()
+                );
+                console.log(
+                  "Procurando vela antecessor com valor:",
+                  numeroAntecessor
+                );
+
                 // Encontrar a vela ANTECESSOR (gatilho): buscar pela data mais próxima ANTES da operação
                 let velaAntecessor = null;
                 let menorDiferenca = Infinity;
-                
+
                 // Primeiro, tentar encontrar velas com o valor exato do antecessor
-                const velasComValor = velasOrdenadas.filter(v => {
+                const velasComValor = velasOrdenadas.filter((v) => {
                   const numeroVela = parseFloat(v.numero);
                   return Math.abs(numeroVela - numeroAntecessor) < 0.01;
                 });
-                
-                console.log(`Encontradas ${velasComValor.length} velas com valor ${numeroAntecessor}x`);
-                
+
+                console.log(
+                  `Encontradas ${velasComValor.length} velas com valor ${numeroAntecessor}x`
+                );
+
                 if (velasComValor.length > 0) {
                   // Mostrar todas as velas candidatas
                   velasComValor.forEach((vela, idx) => {
                     const horarioVela = new Date(vela.horario).getTime();
                     const diferenca = horarioOp - horarioVela;
-                    console.log(`  Candidata ${idx + 1}: ${vela.numero}x em ${new Date(horarioVela).toISOString()} - Diferença: ${(diferenca/1000).toFixed(0)}s`);
+                    console.log(
+                      `  Candidata ${idx + 1}: ${vela.numero}x em ${new Date(
+                        horarioVela
+                      ).toISOString()} - Diferença: ${(
+                        diferenca / 1000
+                      ).toFixed(0)}s`
+                    );
                   });
-                  
+
                   // Buscar a vela mais próxima da operação (independente se antes ou depois)
                   // Isso é necessário porque pode haver diferenças de timezone entre servidor e banco
                   for (const vela of velasComValor) {
                     const horarioVela = new Date(vela.horario).getTime();
                     const diferenca = horarioOp - horarioVela;
-                    
+
                     // Aceitar qualquer vela dentro de 2 horas (antes ou depois)
                     // Isso compensa diferenças de timezone e pequenas variações
-                    if (Math.abs(diferenca) < 7200000) { // 2 horas = 7200000ms
+                    if (Math.abs(diferenca) < 7200000) {
+                      // 2 horas = 7200000ms
                       if (Math.abs(diferenca) < Math.abs(menorDiferenca)) {
                         menorDiferenca = diferenca;
                         velaAntecessor = vela;
                       }
                     }
                   }
-                  
+
                   // Se não encontrou nenhuma, pegar a mais próxima sem limite de tempo
                   if (!velaAntecessor && velasComValor.length > 0) {
-                    console.log('⚠️ Nenhuma vela dentro da janela de 2h, pegando a mais próxima...');
+                    console.log(
+                      "⚠️ Nenhuma vela dentro da janela de 2h, pegando a mais próxima..."
+                    );
                     for (const vela of velasComValor) {
                       const horarioVela = new Date(vela.horario).getTime();
                       const diferenca = horarioOp - horarioVela;
-                      
+
                       if (Math.abs(diferenca) < Math.abs(menorDiferenca)) {
                         menorDiferenca = diferenca;
                         velaAntecessor = vela;
@@ -1440,230 +1762,343 @@
                 }
 
                 if (velaAntecessor) {
-                  console.log('✅ Vela ANTECESSOR encontrada:', { id: velaAntecessor.id, numero: velaAntecessor.numero, horario: velaAntecessor.horario });
-                  console.log('✅ Diferença de tempo:', (menorDiferenca / 1000).toFixed(0), 'segundos');
-                  
+                  console.log("✅ Vela ANTECESSOR encontrada:", {
+                    id: velaAntecessor.id,
+                    numero: velaAntecessor.numero,
+                    horario: velaAntecessor.horario,
+                  });
+                  console.log(
+                    "✅ Diferença de tempo:",
+                    (menorDiferenca / 1000).toFixed(0),
+                    "segundos"
+                  );
+
                   // Criar chave única para este antecessor (valor arredondado para 2 casas decimais)
                   const chaveAntecessor = numeroAntecessor.toFixed(2);
-                  
+
                   // Verificar se é a primeira vez que este antecessor aparece
-                  const isPrimeiraVez = !antecessoresVistos.has(chaveAntecessor);
-                  
+                  const isPrimeiraVez =
+                    !antecessoresVistos.has(chaveAntecessor);
+
                   if (isPrimeiraVez) {
-                    console.log(`🆕 PRIMEIRA VEZ que o antecessor ${chaveAntecessor}x aparece - apenas mapeando, SEM marcar tentativas`);
+                    console.log(
+                      `🆕 PRIMEIRA VEZ que o antecessor ${chaveAntecessor}x aparece - apenas mapeando, SEM marcar tentativas`
+                    );
                     antecessoresVistos.add(chaveAntecessor);
                   } else {
-                    console.log(`🔄 Antecessor ${chaveAntecessor}x JÁ VISTO antes - marcando tentativas`);
+                    console.log(
+                      `🔄 Antecessor ${chaveAntecessor}x JÁ VISTO antes - marcando tentativas`
+                    );
                   }
-                  
+
                   // Marcar vela ANTECESSOR (laranja) - esta é a vela gatilho
-                  if (!velasComBorda.has(velaAntecessor.id) || 
-                      velasComBorda.get(velaAntecessor.id).tipo !== 'gatilho') {
-                    velasComBorda.set(velaAntecessor.id, { 
-                      tipo: 'gatilho', 
+                  if (
+                    !velasComBorda.has(velaAntecessor.id) ||
+                    velasComBorda.get(velaAntecessor.id).tipo !== "gatilho"
+                  ) {
+                    velasComBorda.set(velaAntecessor.id, {
+                      tipo: "gatilho",
                       operacao: op,
                       prioridade: 3,
-                      isPrimeiraVez: isPrimeiraVez
+                      isPrimeiraVez: isPrimeiraVez,
                     });
-                    console.log('✅ Marcada como GATILHO/ANTECESSOR (laranja)');
+                    console.log("✅ Marcada como GATILHO/ANTECESSOR (laranja)");
                   }
 
                   // SOMENTE marcar tentativas se NÃO for a primeira vez que este antecessor aparece
                   if (!isPrimeiraVez) {
                     // Encontrar as DUAS PRÓXIMAS velas APÓS o antecessor (por data)
                     // Estas são as tentativas de aposta
-                    const horarioAntecessor = new Date(velaAntecessor.horario).getTime();
-                    const velasPosteriores = velasOrdenadas.filter(v => 
-                      new Date(v.horario).getTime() > horarioAntecessor
-                    ).sort((a, b) => 
-                      new Date(a.horario) - new Date(b.horario)
-                    );
+                    const horarioAntecessor = new Date(
+                      velaAntecessor.horario
+                    ).getTime();
+                    const velasPosteriores = velasOrdenadas
+                      .filter(
+                        (v) => new Date(v.horario).getTime() > horarioAntecessor
+                      )
+                      .sort(
+                        (a, b) => new Date(a.horario) - new Date(b.horario)
+                      );
 
-                    console.log(`Encontradas ${velasPosteriores.length} velas após o antecessor`);
+                    console.log(
+                      `Encontradas ${velasPosteriores.length} velas após o antecessor`
+                    );
 
                     // 1ª TENTATIVA (próxima vela APÓS o antecessor)
                     if (velasPosteriores.length > 0) {
                       const velaTentativa1 = velasPosteriores[0];
-                      const numeroTentativa1 = parseFloat(velaTentativa1.numero);
-                      console.log('Vela 1ª TENTATIVA:', { id: velaTentativa1.id, numero: numeroTentativa1, horario: velaTentativa1.horario });
-                      
+                      const numeroTentativa1 = parseFloat(
+                        velaTentativa1.numero
+                      );
+                      console.log("Vela 1ª TENTATIVA:", {
+                        id: velaTentativa1.id,
+                        numero: numeroTentativa1,
+                        horario: velaTentativa1.horario,
+                      });
+
                       // Verificar se é Win (>= 5x)
                       const isWinTentativa1 = numeroTentativa1 >= 5;
-                      
-                      const marcacaoAtual = velasComBorda.get(velaTentativa1.id);
+
+                      const marcacaoAtual = velasComBorda.get(
+                        velaTentativa1.id
+                      );
                       if (!marcacaoAtual || marcacaoAtual.prioridade < 2) {
-                        velasComBorda.set(velaTentativa1.id, { 
-                          tipo: 'entrada1', 
+                        velasComBorda.set(velaTentativa1.id, {
+                          tipo: "entrada1",
                           operacao: op,
                           prioridade: 2,
-                          isWin: isWinTentativa1
+                          isWin: isWinTentativa1,
                         });
-                        console.log(`✅ Marcada como TENTATIVA 1 (${isWinTentativa1 ? 'WIN >= 5x - verde' : 'LOSS < 5x - vermelho'})`);
+                        console.log(
+                          `✅ Marcada como TENTATIVA 1 (${
+                            isWinTentativa1
+                              ? "WIN >= 5x - verde"
+                              : "LOSS < 5x - vermelho"
+                          })`
+                        );
                       }
-                      
+
                       // 2ª TENTATIVA - SOMENTE se NÃO foi Win na 1ª tentativa
                       if (!isWinTentativa1 && velasPosteriores.length > 1) {
                         const velaTentativa2 = velasPosteriores[1];
-                        const numeroTentativa2 = parseFloat(velaTentativa2.numero);
-                        console.log('Vela 2ª TENTATIVA:', { id: velaTentativa2.id, numero: numeroTentativa2, horario: velaTentativa2.horario });
-                        
+                        const numeroTentativa2 = parseFloat(
+                          velaTentativa2.numero
+                        );
+                        console.log("Vela 2ª TENTATIVA:", {
+                          id: velaTentativa2.id,
+                          numero: numeroTentativa2,
+                          horario: velaTentativa2.horario,
+                        });
+
                         // Verificar se é Win (>= 5x)
                         const isWinTentativa2 = numeroTentativa2 >= 5;
-                        
-                        const marcacaoAtual2 = velasComBorda.get(velaTentativa2.id);
+
+                        const marcacaoAtual2 = velasComBorda.get(
+                          velaTentativa2.id
+                        );
                         if (!marcacaoAtual2 || marcacaoAtual2.prioridade < 1) {
-                          velasComBorda.set(velaTentativa2.id, { 
-                            tipo: 'entrada2', 
+                          velasComBorda.set(velaTentativa2.id, {
+                            tipo: "entrada2",
                             operacao: op,
                             prioridade: 1,
-                            isWin: isWinTentativa2
+                            isWin: isWinTentativa2,
                           });
-                          console.log(`✅ Marcada como TENTATIVA 2 (${isWinTentativa2 ? 'WIN >= 5x - verde' : 'LOSS < 5x - vermelho'})`);
+                          console.log(
+                            `✅ Marcada como TENTATIVA 2 (${
+                              isWinTentativa2
+                                ? "WIN >= 5x - verde"
+                                : "LOSS < 5x - vermelho"
+                            })`
+                          );
                         }
                       } else if (isWinTentativa1) {
-                        console.log('⏭️ 2ª TENTATIVA não marcada - Win na 1ª tentativa');
+                        console.log(
+                          "⏭️ 2ª TENTATIVA não marcada - Win na 1ª tentativa"
+                        );
                       }
                     }
                   } else {
-                    console.log('⏭️ Tentativas NÃO marcadas - primeira vez que este antecessor aparece');
+                    console.log(
+                      "⏭️ Tentativas NÃO marcadas - primeira vez que este antecessor aparece"
+                    );
                   }
                 } else {
-                  console.log('❌ Vela ANTECESSOR NÃO encontrada para esta operação');
+                  console.log(
+                    "❌ Vela ANTECESSOR NÃO encontrada para esta operação"
+                  );
                 }
               });
             }
 
-            console.log('\n=== RESUMO DAS MARCAÇÕES ===');
-            console.log('Total de velas marcadas:', velasComBorda.size);
-            console.log('Detalhes das marcações:');
+            console.log("\n=== RESUMO DAS MARCAÇÕES ===");
+            console.log("Total de velas marcadas:", velasComBorda.size);
+            console.log("Detalhes das marcações:");
             velasComBorda.forEach((marcacao, velaId) => {
-              console.log(`Vela ID ${velaId}: ${marcacao.tipo} (prioridade ${marcacao.prioridade})`);
+              console.log(
+                `Vela ID ${velaId}: ${marcacao.tipo} (prioridade ${marcacao.prioridade})`
+              );
             });
 
             // Renderizar velas com cores (ordem cronológica inversa para exibição - mais recente primeiro)
-            grid.innerHTML = velasData.velas.map(vela => {
-              const numero = parseFloat(vela.numero);
-              let corClass = '';
-              let corTexto = '';
-              
-              // Verificar se a vela está marcada
-              if (velasComBorda.has(vela.id)) {
-                const marcacao = velasComBorda.get(vela.id);
-                
-                console.log(`Renderizando vela ${vela.id} (${numero}x) - Tipo: ${marcacao.tipo}`);
-                
-                if (marcacao.tipo === 'gatilho') {
-                  // Vela Gatilho = Laranja
-                  corClass = 'bg-orange-500';
-                  corTexto = '🟠 Gatilho (Antecessor)';
-                } else if (marcacao.tipo === 'entrada1' || marcacao.tipo === 'entrada2') {
-                  // Vela de entrada - verificar se é Win ou Loss baseado no valor
-                  // Win = >= 5x, Loss = < 5x
-                  const isWin = marcacao.isWin !== undefined ? marcacao.isWin : (numero >= 5);
-                  
-                  console.log(`Valor da vela: ${numero}x - ${isWin ? 'WIN' : 'LOSS'}`);
-                  
-                  if (isWin) {
-                    // Win (>= 5x) = Verde
-                    corClass = 'bg-green-500';
-                    corTexto = `🟢 Win (${numero.toFixed(2)}x >= 5x)`;
+            grid.innerHTML = velasData.velas
+              .map((vela) => {
+                const numero = parseFloat(vela.numero);
+                let corClass = "";
+                let corTexto = "";
+
+                // Verificar se a vela está marcada
+                if (velasComBorda.has(vela.id)) {
+                  const marcacao = velasComBorda.get(vela.id);
+
+                  console.log(
+                    `Renderizando vela ${vela.id} (${numero}x) - Tipo: ${marcacao.tipo}`
+                  );
+
+                  if (marcacao.tipo === "gatilho") {
+                    // Vela Gatilho = Laranja
+                    corClass = "bg-orange-500";
+                    corTexto = "🟠 Gatilho (Antecessor)";
+                  } else if (
+                    marcacao.tipo === "entrada1" ||
+                    marcacao.tipo === "entrada2"
+                  ) {
+                    // Vela de entrada - verificar se é Win ou Loss baseado no valor
+                    // Win = >= 5x, Loss = < 5x
+                    const isWin =
+                      marcacao.isWin !== undefined
+                        ? marcacao.isWin
+                        : numero >= 5;
+
+                    console.log(
+                      `Valor da vela: ${numero}x - ${isWin ? "WIN" : "LOSS"}`
+                    );
+
+                    if (isWin) {
+                      // Win (>= 5x) = Verde
+                      corClass = "bg-green-500";
+                      corTexto = `🟢 Win (${numero.toFixed(2)}x >= 5x)`;
+                    } else {
+                      // Loss (< 5x) = Vermelho
+                      corClass = "bg-red-500";
+                      corTexto = `🔴 Loss (${numero.toFixed(2)}x < 5x)`;
+                    }
+                  }
+                } else {
+                  // Vela normal - cor baseada no valor
+                  if (numero < 2) {
+                    corClass = "bg-blue-500";
+                    corTexto = "Azul";
+                  } else if (numero >= 2 && numero < 10) {
+                    corClass = "bg-purple-500";
+                    corTexto = "Roxa";
                   } else {
-                    // Loss (< 5x) = Vermelho
-                    corClass = 'bg-red-500';
-                    corTexto = `🔴 Loss (${numero.toFixed(2)}x < 5x)`;
+                    corClass = "bg-pink-500";
+                    corTexto = "Rosa";
                   }
                 }
-              } else {
-                // Vela normal - cor baseada no valor
-                if (numero < 2) {
-                  corClass = 'bg-blue-500';
-                  corTexto = 'Azul';
-                } else if (numero >= 2 && numero < 10) {
-                  corClass = 'bg-purple-500';
-                  corTexto = 'Roxa';
-                } else {
-                  corClass = 'bg-pink-500';
-                  corTexto = 'Rosa';
-                }
-              }
-              
-              const horario = new Date(vela.horario).toLocaleString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-              });
-              
-              return `
-                <div class="${corClass} rounded-lg p-3 flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer shadow-lg" title="${corTexto} - ${horario}" data-vela-id="${vela.id}">
-                  <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
-                  <span class="text-white text-xs opacity-75">${horario.split(' ')[1]}</span>
+
+                const horario = new Date(vela.horario).toLocaleString("pt-BR", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                });
+
+                return `
+                <div class="${corClass} rounded-lg p-3 flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer shadow-lg" title="${corTexto} - ${horario}" data-vela-id="${
+                  vela.id
+                }">
+                  <span class="text-white font-bold text-sm">${numero.toFixed(
+                    2
+                  )}x</span>
+                  <span class="text-white text-xs opacity-75">${
+                    horario.split(" ")[1]
+                  }</span>
                 </div>
               `;
-            }).join('');
-            
+              })
+              .join("");
+
             // Atualizar estatísticas
             if (operacoesData.success) {
               const wins = operacoesData.resumo.vitorias;
               const loss = operacoesData.resumo.derrotas;
               const total = operacoesData.resumo.total;
-              const assertividade = total > 0 ? ((wins / total) * 100).toFixed(2) : 0;
+              const assertividade =
+                total > 0 ? ((wins / total) * 100).toFixed(2) : 0;
 
-              document.getElementById('velasWins').textContent = wins;
-              document.getElementById('velasLoss').textContent = loss;
-              document.getElementById('velasAssertividade').textContent = assertividade + '%';
+              document.getElementById("velasWins").textContent = wins;
+              document.getElementById("velasLoss").textContent = loss;
+              document.getElementById("velasAssertividade").textContent =
+                assertividade + "%";
             }
           } else {
-            grid.innerHTML = '<p class="col-span-full text-center text-gray-400 py-8">Nenhuma vela encontrada</p>';
+            grid.innerHTML =
+              '<p class="col-span-full text-center text-gray-400 py-8">Nenhuma vela encontrada</p>';
           }
         } catch (error) {
-          console.error('Erro ao carregar velas:', error);
-          document.getElementById('velasGrid').innerHTML = '<p class="col-span-full text-center text-red-400 py-8">Erro ao carregar velas</p>';
+          console.error("Erro ao carregar velas:", error);
+          document.getElementById("velasGrid").innerHTML =
+            '<p class="col-span-full text-center text-red-400 py-8">Erro ao carregar velas</p>';
         }
+      }
+
+      async function atualizarJogoAtual() {
+        try {
+          const response = await fetch(`${API_URL}/jogo-atual`, {
+            headers: { Authorization: `Bearer ${authToken}` },
+          });
+          const data = await response.json();
+
+          if (data.success && data.jogoAtual && data.jogoAtual.valor) {
+            velaAtual = {
+              numero: data.jogoAtual.valor,
+              isAtual: true,
+            };
+            renderizarVelasComAtual();
+          }
+        } catch (error) {
+          console.error("Erro ao atualizar jogo atual:", error);
+        }
+      }
+
+      function iniciarMonitoramentoJogoAtual() {
+        if (jogoAtualInterval) {
+          clearInterval(jogoAtualInterval);
+        }
+        jogoAtualInterval = setInterval(atualizarJogoAtual, 1000); // A cada 1 segundo
+      }
+
+      function pararMonitoramentoJogoAtual() {
+        if (jogoAtualInterval) {
+          clearInterval(jogoAtualInterval);
+          jogoAtualInterval = null;
+        }
+        velaAtual = null;
       }
 
       // ==================== MODAL DE HISTÓRICO ====================
 
       function abrirModalHistorico() {
-        document.getElementById('modalHistorico').classList.remove('hidden');
+        document.getElementById("modalHistorico").classList.remove("hidden");
         carregarCasasNoFiltro();
         carregarHistoricoCompleto();
       }
 
       function fecharModalHistorico() {
-        document.getElementById('modalHistorico').classList.add('hidden');
+        document.getElementById("modalHistorico").classList.add("hidden");
       }
 
       async function carregarCasasNoFiltro() {
         try {
           const response = await fetch(`${API_URL}/casas`, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
-          const select = document.getElementById('filtroCasa');
+          const select = document.getElementById("filtroCasa");
 
           if (data.success && data.casas.length > 0) {
             select.innerHTML = '<option value="">Todas as Casas</option>';
-            
-            data.casas.forEach(casa => {
-              const option = document.createElement('option');
+
+            data.casas.forEach((casa) => {
+              const option = document.createElement("option");
               option.value = casa.id;
               option.textContent = casa.casa;
               select.appendChild(option);
             });
           }
         } catch (error) {
-          console.error('Erro ao carregar casas no filtro:', error);
+          console.error("Erro ao carregar casas no filtro:", error);
         }
       }
 
       async function carregarHistoricoCompleto() {
         try {
-          const filtroCasa = document.getElementById('filtroCasa').value;
-          const filtroStatus = document.getElementById('filtroStatus').value;
+          const filtroCasa = document.getElementById("filtroCasa").value;
+          const filtroStatus = document.getElementById("filtroStatus").value;
 
           let url = `${API_URL}/historico-completo?`;
           if (filtroCasa) url += `casa_bet_id=${filtroCasa}&`;
@@ -1671,65 +2106,98 @@
 
           const response = await fetch(url, {
             headers: {
-              'Authorization': `Bearer ${authToken}`
-            }
+              Authorization: `Bearer ${authToken}`,
+            },
           });
 
           const data = await response.json();
 
           if (data.success) {
             // Atualizar resumo
-            document.getElementById('totalOperacoes').textContent = data.resumo.total;
-            document.getElementById('totalVitorias').textContent = data.resumo.vitorias;
-            document.getElementById('totalDerrotas').textContent = data.resumo.derrotas;
-            
+            document.getElementById("totalOperacoes").textContent =
+              data.resumo.total;
+            document.getElementById("totalVitorias").textContent =
+              data.resumo.vitorias;
+            document.getElementById("totalDerrotas").textContent =
+              data.resumo.derrotas;
+
             const lucroTotal = data.resumo.lucroTotal;
-            const lucroEl = document.getElementById('lucroTotalHistorico');
+            const lucroEl = document.getElementById("lucroTotalHistorico");
             lucroEl.textContent = `R$ ${lucroTotal.toFixed(2)}`;
-            lucroEl.className = lucroTotal >= 0 ? 'text-2xl font-bold text-green-400' : 'text-2xl font-bold text-red-400';
+            lucroEl.className =
+              lucroTotal >= 0
+                ? "text-2xl font-bold text-green-400"
+                : "text-2xl font-bold text-red-400";
 
             // Atualizar tabela
-            const tbody = document.getElementById('tabelaHistorico');
-            
+            const tbody = document.getElementById("tabelaHistorico");
+
             if (data.operacoes.length === 0) {
-              tbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-400">Nenhuma operação encontrada</td></tr>';
+              tbody.innerHTML =
+                '<tr><td colspan="7" class="text-center py-8 text-gray-400">Nenhuma operação encontrada</td></tr>';
             } else {
-              tbody.innerHTML = data.operacoes.map(op => {
-                const statusClass = op.status === 'win' ? 'text-green-400' : op.status === 'loss' ? 'text-red-400' : 'text-yellow-400';
-                const statusText = op.status === 'win' ? 'WIN' : op.status === 'loss' ? 'LOSS' : 'AGUARDANDO';
-                const lucroClass = (op.lucro_prejuizo || 0) >= 0 ? 'text-green-400' : 'text-red-400';
-                
-                return `
+              tbody.innerHTML = data.operacoes
+                .map((op) => {
+                  const statusClass =
+                    op.status === "win"
+                      ? "text-green-400"
+                      : op.status === "loss"
+                      ? "text-red-400"
+                      : "text-yellow-400";
+                  const statusText =
+                    op.status === "win"
+                      ? "WIN"
+                      : op.status === "loss"
+                      ? "LOSS"
+                      : "AGUARDANDO";
+                  const lucroClass =
+                    (op.lucro_prejuizo || 0) >= 0
+                      ? "text-green-400"
+                      : "text-red-400";
+
+                  return `
                   <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td class="py-3 px-2">${new Date(op.created_at).toLocaleString('pt-BR')}</td>
-                    <td class="py-3 px-2">${op.casa || '-'}</td>
-                    <td class="py-3 px-2">${op.antecessor_gatilho}x → ${op.gatilho_original}x</td>
-                    <td class="py-3 px-2">${op.resultado ? op.resultado.toFixed(2) + 'x' : '-'}</td>
-                    <td class="py-3 px-2">${op.gale_atual}/${op.total_gales}</td>
+                    <td class="py-3 px-2">${new Date(
+                      op.created_at
+                    ).toLocaleString("pt-BR")}</td>
+                    <td class="py-3 px-2">${op.casa || "-"}</td>
+                    <td class="py-3 px-2">${op.antecessor_gatilho}x → ${
+                    op.gatilho_original
+                  }x</td>
+                    <td class="py-3 px-2">${
+                      op.resultado ? op.resultado.toFixed(2) + "x" : "-"
+                    }</td>
+                    <td class="py-3 px-2">${op.gale_atual}/${
+                    op.total_gales
+                  }</td>
                     <td class="py-3 px-2"><span class="${statusClass} font-semibold">${statusText}</span></td>
-                    <td class="py-3 px-2 text-right"><span class="${lucroClass} font-semibold">R$ ${(op.lucro_prejuizo || 0).toFixed(2)}</span></td>
+                    <td class="py-3 px-2 text-right"><span class="${lucroClass} font-semibold">R$ ${(
+                    op.lucro_prejuizo || 0
+                  ).toFixed(2)}</span></td>
                   </tr>
                 `;
-              }).join('');
+                })
+                .join("");
             }
           }
         } catch (error) {
-          console.error('Erro ao carregar histórico:', error);
-          document.getElementById('tabelaHistorico').innerHTML = '<tr><td colspan="7" class="text-center py-8 text-red-400">Erro ao carregar histórico</td></tr>';
+          console.error("Erro ao carregar histórico:", error);
+          document.getElementById("tabelaHistorico").innerHTML =
+            '<tr><td colspan="7" class="text-center py-8 text-red-400">Erro ao carregar histórico</td></tr>';
         }
       }
 
       // ==================== FUNÇÕES DO BOT ====================
 
       async function iniciarBot() {
-        const btnIniciar = document.getElementById('btnIniciar');
-        const btnParar = document.getElementById('btnParar');
-        const btnIniciarText = document.getElementById('btnIniciarText');
-        const btnIniciarSpinner = document.getElementById('btnIniciarSpinner');
+        const btnIniciar = document.getElementById("btnIniciar");
+        const btnParar = document.getElementById("btnParar");
+        const btnIniciarText = document.getElementById("btnIniciarText");
+        const btnIniciarSpinner = document.getElementById("btnIniciarSpinner");
 
         btnIniciar.disabled = true;
-        btnIniciarText.classList.add('hidden');
-        btnIniciarSpinner.classList.remove('hidden');
+        btnIniciarText.classList.add("hidden");
+        btnIniciarSpinner.classList.remove("hidden");
 
         try {
           const config = {
@@ -1750,9 +2218,9 @@
 
           const response = await fetch(`${API_URL}/start`, {
             method: "POST",
-            headers: { 
+            headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${authToken}`
+              Authorization: `Bearer ${authToken}`,
             },
             body: JSON.stringify(config),
           });
@@ -1771,52 +2239,73 @@
           alert(`Erro ao iniciar bot: ${error.message}`);
           btnIniciar.disabled = false;
         } finally {
-            btnIniciarText.classList.remove('hidden');
-            btnIniciarSpinner.classList.add('hidden');
+          btnIniciarText.classList.remove("hidden");
+          btnIniciarSpinner.classList.add("hidden");
         }
       }
 
       async function atualizarHistoricoOperacoes() {
         try {
-          const [historicoResponse, currentOperationResponse] = await Promise.all([
-            fetch(`${API_URL}/historico`, {
-              headers: { "Authorization": `Bearer ${authToken}` }
-            }),
-            fetch(`${API_URL}/current-operation`, {
-              headers: { "Authorization": `Bearer ${authToken}` }
-            })
-          ]);
+          const [historicoResponse, currentOperationResponse] =
+            await Promise.all([
+              fetch(`${API_URL}/historico`, {
+                headers: { Authorization: `Bearer ${authToken}` },
+              }),
+              fetch(`${API_URL}/current-operation`, {
+                headers: { Authorization: `Bearer ${authToken}` },
+              }),
+            ]);
 
           const historicoData = await historicoResponse.json();
           const currentOperationData = await currentOperationResponse.json();
 
-          const currentOperationId = currentOperationData.success ? currentOperationData.operationId : null;
+          const currentOperationId = currentOperationData.success
+            ? currentOperationData.operationId
+            : null;
 
           const list = document.getElementById("historicoOperacoesList");
-          list.innerHTML = '';
+          list.innerHTML = "";
 
           if (historicoData.success && historicoData.historico.length > 0) {
-            historicoData.historico.forEach(op => {
-              const statusClass = op.status === 'win' ? 'text-green-400' : op.status === 'loss' ? 'text-red-400' : 'text-yellow-400';
-              const isCurrent = currentOperationId === op.id ? 'border-l-4 border-indigo-500 pl-2' : '';
-              
-              const operationTime = new Date(op.created_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            historicoData.historico.forEach((op) => {
+              const statusClass =
+                op.status === "win"
+                  ? "text-green-400"
+                  : op.status === "loss"
+                  ? "text-red-400"
+                  : "text-yellow-400";
+              const isCurrent =
+                currentOperationId === op.id
+                  ? "border-l-4 border-indigo-500 pl-2"
+                  : "";
+
+              const operationTime = new Date(op.created_at).toLocaleTimeString(
+                "pt-BR",
+                { hour: "2-digit", minute: "2-digit" }
+              );
 
               list.innerHTML += `
                 <div class="bg-white/5 rounded-lg p-3 flex items-center justify-between ${isCurrent}">
                   <div>
-                    <p class="text-xs text-gray-400">Gatilho: ${op.antecessor_gatilho}x → ${op.gatilho_original}x</p>
-                    <p class="font-bold ${statusClass}">Resultado: ${op.resultado ? op.resultado.toFixed(2) + 'x' : 'Aguardando...'}</p>
+                    <p class="text-xs text-gray-400">Gatilho: ${
+                      op.antecessor_gatilho
+                    }x → ${op.gatilho_original}x</p>
+                    <p class="font-bold ${statusClass}">Resultado: ${
+                op.resultado ? op.resultado.toFixed(2) + "x" : "Aguardando..."
+              }</p>
                   </div>
                   <div class="text-right">
-                    <p class="text-xs text-gray-400">Gale: ${op.gale_atual}/${op.total_gales}</p>
+                    <p class="text-xs text-gray-400">Gale: ${op.gale_atual}/${
+                op.total_gales
+              }</p>
                     <p class="font-semibold">${operationTime}</p>
                   </div>
                 </div>
               `;
             });
           } else {
-            list.innerHTML = '<p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>';
+            list.innerHTML =
+              '<p class="text-center text-gray-500 py-4">Nenhuma operação recente</p>';
           }
         } catch (error) {
           console.error("Erro ao listar histórico de operações:", error);
@@ -1824,13 +2313,13 @@
       }
 
       async function pararBot() {
-        const btnIniciar = document.getElementById('btnIniciar');
-        const btnParar = document.getElementById('btnParar');
+        const btnIniciar = document.getElementById("btnIniciar");
+        const btnParar = document.getElementById("btnParar");
         btnParar.disabled = true;
 
         try {
           const response = await fetch(`${API_URL}/stop`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: { Authorization: `Bearer ${authToken}` },
           });
           const data = await response.json();
 
@@ -1840,7 +2329,11 @@
             btnIniciar.disabled = false;
 
             if (data.resumo) {
-              alert(`Bot parado!\nSaldo Final: R$ ${data.resumo.saldoFinal.toFixed(2)}\nLucro Total: R$ ${data.resumo.lucroTotal.toFixed(2)}`);
+              alert(
+                `Bot parado!\nSaldo Final: R$ ${data.resumo.saldoFinal.toFixed(
+                  2
+                )}\nLucro Total: R$ ${data.resumo.lucroTotal.toFixed(2)}`
+              );
             }
           } else {
             alert(`Erro: ${data.error}`);
@@ -1855,7 +2348,7 @@
       async function atualizarStatus() {
         try {
           const response = await fetch(`${API_URL}/status`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: { Authorization: `Bearer ${authToken}` },
           });
           const data = await response.json();
 
@@ -1900,12 +2393,12 @@
 
             if (status.isRunning) {
               updateStatusIndicator(status.isInBet ? "betting" : "running");
-              document.getElementById('btnIniciar').disabled = true;
-              document.getElementById('btnParar').disabled = false;
+              document.getElementById("btnIniciar").disabled = true;
+              document.getElementById("btnParar").disabled = false;
             } else {
               updateStatusIndicator("stopped");
-              document.getElementById('btnIniciar').disabled = false;
-              document.getElementById('btnParar').disabled = true;
+              document.getElementById("btnIniciar").disabled = false;
+              document.getElementById("btnParar").disabled = true;
             }
           }
         } catch (error) {
@@ -1916,7 +2409,7 @@
       async function atualizarSaldo() {
         try {
           const response = await fetch(`${API_URL}/saldo`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: { Authorization: `Bearer ${authToken}` },
           });
           const data = await response.json();
 
@@ -1937,14 +2430,14 @@
                 : "text-sm font-semibold text-red-400";
           }
         } catch (error) {
-          console.error('Erro ao atualizar saldo:', error);
+          console.error("Erro ao atualizar saldo:", error);
         }
       }
 
       async function listarGatilhos() {
         try {
           const response = await fetch(`${API_URL}/gatilhos`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: { Authorization: `Bearer ${authToken}` },
           });
           const data = await response.json();
 
@@ -1955,27 +2448,27 @@
             // Se recebemos gatilhos da API
             if (data.gatilhos && data.gatilhos.length > 0) {
               // Atualizar cache: mesclar novos gatilhos com os existentes
-              data.gatilhos.forEach(novoGatilho => {
+              data.gatilhos.forEach((novoGatilho) => {
                 const key = `${novoGatilho.antecessor}-${novoGatilho.gatilhoPRO}`;
                 const existingIndex = cachedGatilhos.findIndex(
-                  g => `${g.antecessor}-${g.gatilhoPRO}` === key
+                  (g) => `${g.antecessor}-${g.gatilhoPRO}` === key
                 );
-                
+
                 if (existingIndex >= 0) {
                   // Atualizar gatilho existente
                   cachedGatilhos[existingIndex] = {
                     ...novoGatilho,
-                    lastSeen: now
+                    lastSeen: now,
                   };
                 } else {
                   // Adicionar novo gatilho
                   cachedGatilhos.push({
                     ...novoGatilho,
-                    lastSeen: now
+                    lastSeen: now,
                   });
                 }
               });
-              
+
               lastGatilhosUpdate = now;
             }
 
@@ -1988,8 +2481,8 @@
 
             // Remover gatilhos muito antigos (mais de 5 minutos sem serem vistos)
             const TIMEOUT = 5 * 60 * 1000; // 5 minutos
-            cachedGatilhos = cachedGatilhos.filter(g => {
-              return (now - (g.lastSeen || 0)) < TIMEOUT;
+            cachedGatilhos = cachedGatilhos.filter((g) => {
+              return now - (g.lastSeen || 0) < TIMEOUT;
             });
 
             // Ordenar por vezesEncontrado (decrescente) e depois por lastSeen (mais recente primeiro)
@@ -2003,26 +2496,36 @@
             // Renderizar todos os gatilhos do cache
             list.innerHTML = cachedGatilhos
               .map((g) => {
-                const isRecent = (now - (g.lastSeen || 0)) < 30000; // Menos de 30 segundos
-                const highlightClass = isRecent ? 'border-l-4 border-green-500' : '';
-                
+                const isRecent = now - (g.lastSeen || 0) < 30000; // Menos de 30 segundos
+                const highlightClass = isRecent
+                  ? "border-l-4 border-green-500"
+                  : "";
+
                 return `
                   <div class="bg-white/5 rounded-lg p-3 flex items-center justify-between hover:bg-white/10 transition-colors ${highlightClass}">
                     <div class="flex items-center space-x-4">
                       <div>
                         <span class="text-xs text-gray-400">Antecessor</span>
-                        <p class="font-bold text-indigo-400">${g.antecessor}x</p>
+                        <p class="font-bold text-indigo-400">${
+                          g.antecessor
+                        }x</p>
                       </div>
                       <span class="text-gray-600">→</span>
                       <div>
                         <span class="text-xs text-gray-400">PRO</span>
-                        <p class="font-bold text-purple-400">${g.gatilhoPRO}x</p>
+                        <p class="font-bold text-purple-400">${
+                          g.gatilhoPRO
+                        }x</p>
                       </div>
                     </div>
                     <div class="text-right">
                       <p class="text-xs text-gray-400">Encontrado</p>
                       <p class="font-semibold">${g.vezesEncontrado}x</p>
-                      ${isRecent ? '<span class="text-xs text-green-400">●</span>' : ''}
+                      ${
+                        isRecent
+                          ? '<span class="text-xs text-green-400">●</span>'
+                          : ""
+                      }
                     </div>
                   </div>
                 `;
@@ -2064,6 +2567,9 @@
           atualizarHistoricoOperacoes();
           atualizarVelasRecentes();
         }, 2000); // Atualiza a cada 2 segundos
+
+        // Iniciar monitoramento do jogo atual (a cada 1 segundo)
+        iniciarMonitoramentoJogoAtual();
       }
 
       function stopAutoUpdate() {
@@ -2071,43 +2577,76 @@
           clearInterval(updateInterval);
           updateInterval = null;
         }
+
+        // Parar monitoramento do jogo atual
+        pararMonitoramentoJogoAtual();
       }
 
       async function atualizarVelasRecentes() {
         try {
           const response = await fetch(`${API_URL}/velas-recentes`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: { Authorization: `Bearer ${authToken}` },
           });
           const data = await response.json();
 
           if (data.success && data.velas && data.velas.length > 0) {
-            const list = document.getElementById("velasRecentesList");
-            
-            list.innerHTML = data.velas.map((vela) => {
-              const numero = parseFloat(vela.numero);
-              let corClass = '';
-              
-              // Definir cor baseada no valor
-              if (numero < 2) {
-                corClass = 'bg-blue-500'; // Azul
-              } else if (numero >= 2 && numero < 10) {
-                corClass = 'bg-purple-500'; // Roxo
-              } else {
-                corClass = 'bg-pink-500'; // Rosa
-              }
-              
-              return `
-                <div class="${corClass} rounded-lg px-3 py-1 flex flex-col items-center justify-center min-w-[60px]">
-                  <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
-                </div>
-              `;
-            }).join('');
+            // Armazenar velas recentes globalmente para renderizar com a vela atual
+            window.velasRecentes = data.velas;
+            renderizarVelasComAtual();
           } else {
-            document.getElementById("velasRecentesList").innerHTML = 
+            document.getElementById("velasRecentesList").innerHTML =
               '<p class="text-xs text-gray-400">Aguardando dados...</p>';
           }
         } catch (error) {
           console.error("Erro ao atualizar velas recentes:", error);
+        }
+      }
+
+      function renderizarVelasComAtual() {
+        const list = document.getElementById("velasRecentesList");
+        const velas = window.velasRecentes || [];
+
+        let htmlVelas = "";
+
+        // Adicionar vela atual em PRIMEIRO LUGAR (se existir)
+        if (velaAtual && velaAtual.numero) {
+          const numero = parseFloat(velaAtual.numero);
+          htmlVelas += `
+      <div class="bg-yellow-500 rounded-lg px-3 py-1 flex flex-col items-center justify-center min-w-[60px] animate-pulse">
+        <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
+        <span class="text-white text-[10px] opacity-75">Atual</span>
+      </div>
+    `;
+        }
+
+        // Adicionar velas recentes (finalizadas)
+        htmlVelas += velas
+          .map((vela) => {
+            const numero = parseFloat(vela.numero);
+            let corClass = "";
+
+            // Definir cor baseada no valor
+            if (numero < 2) {
+              corClass = "bg-blue-500"; // Azul
+            } else if (numero >= 2 && numero < 10) {
+              corClass = "bg-purple-500"; // Roxo
+            } else {
+              corClass = "bg-pink-500"; // Rosa
+            }
+
+            return `
+      <div class="${corClass} rounded-lg px-3 py-1 flex flex-col items-center justify-center min-w-[60px]">
+        <span class="text-white font-bold text-sm">${numero.toFixed(2)}x</span>
+      </div>
+    `;
+          })
+          .join("");
+
+        if (htmlVelas) {
+          list.innerHTML = htmlVelas;
+        } else {
+          list.innerHTML =
+            '<p class="text-xs text-gray-400">Aguardando dados...</p>';
         }
       }
 
@@ -2116,23 +2655,23 @@
           await atualizarStatus();
           await listarGatilhos();
           await atualizarHistoricoOperacoes();
-          
+
           try {
             const response = await fetch(`${API_URL}/status`, {
-              headers: { "Authorization": `Bearer ${authToken}` }
+              headers: { Authorization: `Bearer ${authToken}` },
             });
             const data = await response.json();
-            
+
             if (data.success && data.status.isRunning) {
               startAutoUpdate();
-              document.getElementById('btnIniciar').disabled = true;
-              document.getElementById('btnParar').disabled = false;
+              document.getElementById("btnIniciar").disabled = true;
+              document.getElementById("btnParar").disabled = false;
             }
           } catch (error) {
             console.log("Bot não está rodando");
           }
         } catch (error) {
-          console.error('Erro ao carregar dados iniciais:', error);
+          console.error("Erro ao carregar dados iniciais:", error);
         }
       }
 
@@ -2140,10 +2679,12 @@
 
       window.addEventListener("load", () => {
         updateStatusIndicator("stopped");
-        document.getElementById('btnParar').disabled = true;
+        document.getElementById("btnParar").disabled = true;
 
         // Configurar form de login
-        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        document
+          .getElementById("loginForm")
+          .addEventListener("submit", handleLogin);
 
         // Verificar se já está autenticado
         checkAuth();
@@ -2205,23 +2746,22 @@
       setTimeout(loadConfig, 500);
 
       // Toggle config
-      const toggleConfigBtn = document.getElementById('toggleConfigBtn');
-      const configContent = document.getElementById('configContent');
+      const toggleConfigBtn = document.getElementById("toggleConfigBtn");
+      const configContent = document.getElementById("configContent");
       let configMinimized = false;
 
-      toggleConfigBtn.addEventListener('click', () => {
+      toggleConfigBtn.addEventListener("click", () => {
         configMinimized = !configMinimized;
         if (configMinimized) {
-          configContent.classList.add('hidden');
-          toggleConfigBtn.textContent = 'Maximizar';
+          configContent.classList.add("hidden");
+          toggleConfigBtn.textContent = "Maximizar";
         } else {
-          configContent.classList.remove('hidden');
-          toggleConfigBtn.textContent = 'Minimizar';
+          configContent.classList.remove("hidden");
+          toggleConfigBtn.textContent = "Minimizar";
         }
       });
 
       // ==================== ESTATÍSTICAS E BORDAS DAS VELAS ====================
-
     </script>
   </body>
 </html>
